@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
@@ -17,6 +17,7 @@
 
     <script>
         tailwind.config = {
+            darkMode: 'class', // 🟢 关键配置
             theme: {
                 extend: {
                     fontFamily: {
@@ -26,14 +27,14 @@
                     colors: {
                         // Brand: Teal (深海青)
                         brand: {
-                            50: '#ecfdf5', // 极淡的薄荷底色
+                            50: '#ecfdf5',
                             100: '#d1fae5',
                             200: '#a7f3d0',
                             400: '#34d399',
-                            500: '#10b981', // 主色：明亮但不刺眼
-                            600: '#059669', // 悬停色
-                            700: '#047857', // 文字色
-                            900: '#064e3b'  // 深色文字
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b'
                         },
                         // Accent: Coral (珊瑚橙)
                         accent: {
@@ -41,8 +42,10 @@
                             100: '#ede9fe',
                             200: '#ddd6fe',
                             400: '#a78bfa',
-                            500: '#8b5cf6', // 次要按钮色
-                            600: '#7c3aed'
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            900: '#4c1d95'
                         },
                         // Paper/Backgrounds
                         paper: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 800: '#292524', 900: '#1c1917' }
@@ -50,32 +53,14 @@
                     boxShadow: {
                         'pop': '0 15px 40px -10px rgba(13, 148, 136, 0.15)',
                         'card': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                    }
+                    },
                 }
             }
         }
     </script>
-    <!-- Open Graph / Facebook / LinkedIn (社交分享必备) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.genprintable.com/">
-    <meta property="og:title" content="GenPrintable - Create Magic Worksheets with AI">
-    <meta property="og:description"
-        content="Turn photos into educational puzzles. 100% Free tools for parents & teachers.">
-    <meta property="og:image" content="https://www.genprintable.com/images/og-social-card.jpg">
-    <!-- 制作一张 1200x630 的精美封面图 -->
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.genprintable.com/">
-    <meta property="twitter:title" content="GenPrintable - AI Educational Activity Sheets">
-    <meta property="twitter:description"
-        content="Turn photos into educational puzzles. 100% Free tools for parents & teachers.">
-    <meta property="twitter:image" content="https://www.genprintable.com/images/og-social-card.jpg">
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* 🟢 修复：为 Hero 背景添加暗黑模式支持 */
         .texture-overlay {
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
@@ -85,65 +70,315 @@
             background-image: radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
             background-size: 32px 32px;
         }
+
+        /* 🌙 暗黑模式下的点阵背景 */
+        .dark .hero-bg {
+            background-color: #0f172a;
+            /* Slate 900 */
+            background-image: radial-gradient(#1e293b 1.5px, transparent 1.5px);
+            /* Slate 800 dots */
+        }
+
+        /* Mask Gradient for Carousel */
+        .mask-gradient {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        @keyframes scroll-left {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes scroll-right {
+            from {
+                transform: translateX(-50%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .animate-scroll-left {
+            animation: scroll-left 40s linear infinite;
+        }
+
+        .animate-scroll-right {
+            animation: scroll-right 45s linear infinite;
+        }
+
+        details>summary {
+            list-style: none;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-down {
+            animation: fadeInDown 0.3s ease-out forwards;
+        }
     </style>
 </head>
 
-<body class="bg-paper-50 text-paper-800 font-sans antialiased selection:bg-brand-100 selection:text-brand-900">
+<!-- 🟢 修复：Body 添加 dark:bg-slate-950 dark:text-slate-100 -->
+
+<body
+    class="bg-paper-50 text-paper-800 font-sans antialiased selection:bg-brand-100 selection:text-brand-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
 
     <!-- 1. NAVIGATION -->
-    <header class="w-full bg-white/90 backdrop-blur-md border-b border-paper-100 z-50 h-16 lg:h-20 flex items-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2.5 group">
+    <header
+        class="w-full bg-white/90 backdrop-blur-md border-b border-paper-100 z-50 h-16 lg:h-20 flex items-center dark:bg-slate-900/90 dark:border-slate-800 sticky top-0 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 group">
                 <div
-                    class="w-8 h-8 lg:w-9 lg:h-9 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:rotate-12 transition-transform duration-300">
+                    class="w-8 h-8 lg:w-9 lg:h-9 bg-brand-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:rotate-12 transition-transform duration-300">
                     <i class="fa-solid fa-shapes text-xs lg:text-sm"></i>
                 </div>
                 <span
-                    class="text-lg lg:text-xl font-display font-bold tracking-tight text-paper-900">GenPrintable</span>
+                    class="text-lg lg:text-xl font-display font-bold tracking-tight text-paper-900 dark:text-white">GenPrintable</span>
             </a>
 
-            <nav class="hidden md:flex gap-8">
-                <a href="#generators"
-                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors">Generators</a>
-                <a href="#difference"
-                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors">Why Us</a>
-                <a href="#quality"
-                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors">Quality</a>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-6">
+                <!-- Tools Dropdown -->
+                <div class="relative group h-16 lg:h-20 flex items-center">
+                    <button
+                        class="flex items-center gap-1 text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400 focus:outline-none">
+                        Tools
+                        <i
+                            class="fa-solid fa-chevron-down text-xs opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+                    </button>
+                    <!-- Dropdown Content (Dark mode fixed) -->
+                    <div
+                        class="absolute top-full left-1/2 -translate-x-1/2 w-[480px] bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 p-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50 grid grid-cols-2 gap-2">
+                        <!-- Links... (Same logic applied) -->
+                        <a href="connect-the-dots.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-circle-nodes text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Connect Dots</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Math sequences</div>
+                            </div>
+                        </a>
+                        <a href="tracing-generator.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-sky-100 dark:bg-sky-900/30 text-sky-500 dark:text-sky-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-pen-fancy text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Name Tracing</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Handwriting</div>
+                            </div>
+                        </a>
+                        <a href="cut-and-paste-crafts.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-accent-100 dark:bg-accent-900/30 text-accent-600 dark:text-accent-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-scissors text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Paper Crafts</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Cut & Paste</div>
+                            </div>
+                        </a>
+                        <a href="color-by-number.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-pink-100 dark:bg-pink-900/30 text-pink-500 dark:text-pink-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-palette text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Color by Number</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Coloring</div>
+                            </div>
+                        </a>
+                        <a href="maze-generator.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-diamond-turn-right text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Maze Maker</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Logic</div>
+                            </div>
+                        </a>
+                        <a href="word-search.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-500 dark:text-orange-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Word Search</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Vocab</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="index.html#difference"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Features</a>
+                <a href="pricing.html"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Pricing</a>
+                <a href="about.html"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">About</a>
             </nav>
 
             <div class="flex items-center gap-4">
-                <a href="#generators"
-                    class="bg-brand-500 text-white px-5 py-2 lg:px-6 lg:py-2.5 rounded-full text-xs lg:text-sm font-bold hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/30 hover:-translate-y-0.5 transition-all">
-                    Start Learning Fun
+                <button id="theme-toggle-desktop" aria-label="Toggle Dark Mode"
+                    class="hidden md:flex w-10 h-10 rounded-full bg-paper-100 text-paper-800 hover:bg-paper-200 dark:bg-slate-800 dark:text-yellow-400 dark:hover:bg-slate-700 transition-all items-center justify-center">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+                <a href="tracing-generator.html"
+                    class="hidden sm:flex bg-brand-500 text-white px-5 py-2 lg:px-6 lg:py-2.5 rounded-full text-xs lg:text-sm font-bold hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/30 hover:-translate-y-0.5 transition-all">
+                    Start Creating
                 </a>
             </div>
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 dark:text-slate-200 text-2xl p-2"><i
+                    class="fa-solid fa-bars"></i></button>
         </div>
-        <!-- 在 Header 中增加移动端按钮 -->
-        <button id="mobile-menu-btn" class="md:hidden text-slate-600 text-2xl">
-            <i class="fa-solid fa-bars"></i>
-        </button>
 
-        <!-- 移动端全屏菜单 (默认隐藏) -->
-        <div id="mobile-menu" class="fixed inset-0 bg-white z-40 hidden flex-col items-center justify-center space-y-8">
-            <button id="close-menu-btn" class="absolute top-6 right-6 text-3xl text-slate-400"><i
-                    class="fa-solid fa-xmark"></i></button>
-            <a href="#generators" class="text-2xl font-bold text-slate-800" onclick="toggleMenu()">Generators</a>
-            <a href="#difference" class="text-2xl font-bold text-slate-800" onclick="toggleMenu()">Why Us</a>
-            <a href="#quality" class="text-2xl font-bold text-slate-800" onclick="toggleMenu()">Quality</a>
+        <!-- Mobile Menu (Fixed) -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-[60] bg-white/98 dark:bg-slate-950/98 backdrop-blur-xl hidden flex-col h-[100dvh] transition-all duration-300">
+            <div
+                class="flex items-center justify-between px-6 h-16 border-b border-slate-100 dark:border-slate-800 flex-shrink-0 bg-white/50 dark:bg-slate-900/50">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white"><i
+                            class="fa-solid fa-shapes text-xs lg:text-sm"></i></div>
+                    <span class="text-lg font-display font-bold text-slate-900 dark:text-white">GenPrintable</span>
+                </div>
+                <button id="close-menu-btn"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto px-6 py-6 scrollbar-hide bg-white dark:bg-slate-900">
+                <div class="mb-8">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 ml-1">Tools</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="connect-the-dots.html" onclick="toggleMenu()"
+                            class="group flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 active:scale-95 transition-all duration-200 hover:border-brand-200 dark:hover:border-brand-800">
+                            <div
+                                class="w-10 h-10 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-circle-nodes"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Connect Dots</span>
+                        </a>
+                        <a href="tracing-generator.html" onclick="toggleMenu()"
+                            class="group flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 active:scale-95 transition-all duration-200 hover:border-sky-200 dark:hover:border-sky-800">
+                            <div
+                                class="w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-900/30 text-sky-500 dark:text-sky-400 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-pen-fancy"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Tracing</span>
+                        </a>
+                        <a href="cut-and-paste-crafts.html" onclick="toggleMenu()"
+                            class="group flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 active:scale-95 transition-all duration-200 hover:border-accent-200 dark:hover:border-accent-800">
+                            <div
+                                class="w-10 h-10 rounded-full bg-accent-100 dark:bg-accent-900/30 text-accent-500 dark:text-accent-400 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-scissors"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Crafts</span>
+                        </a>
+                        <a href="color-by-number.html" onclick="toggleMenu()"
+                            class="group flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 active:scale-95 transition-all duration-200 hover:border-pink-200 dark:hover:border-pink-800">
+                            <div
+                                class="w-10 h-10 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-500 dark:text-pink-400 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Coloring</span>
+                        </a>
+                        <a href="maze-generator.html" onclick="toggleMenu()"
+                            class="group flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 active:scale-95 transition-all duration-200 hover:border-amber-200 dark:hover:border-amber-800">
+                            <div
+                                class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-500 dark:text-amber-400 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-diamond-turn-right"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Mazes</span>
+                        </a>
+                        <a href="word-search.html" onclick="toggleMenu()"
+                            class="group flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 active:scale-95 transition-all duration-200 hover:border-orange-200 dark:hover:border-orange-800">
+                            <div
+                                class="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-500 dark:text-orange-400 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Word Search</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 ml-1">Explore</h3>
+                    <div class="flex flex-col space-y-1">
+                        <a href="index.html#difference" onclick="toggleMenu()"
+                            class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 group"><span
+                                class="text-base font-bold text-slate-800 dark:text-slate-200">Features</span><i
+                                class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-brand-500 transition-colors"></i></a>
+                        <a href="pricing.html" onclick="toggleMenu()"
+                            class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 group"><span
+                                class="text-base font-bold text-slate-800 dark:text-slate-200">Pricing</span><i
+                                class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-brand-500 transition-colors"></i></a>
+                        <a href="about.html" onclick="toggleMenu()"
+                            class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 group"><span
+                                class="text-base font-bold text-slate-800 dark:text-slate-200">About Us</span><i
+                                class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-brand-500 transition-colors"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="p-6 border-t border-slate-100 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 flex-shrink-0">
+                <button id="theme-toggle-mobile" aria-label="Toggle Dark Mode"
+                    class="w-full flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-yellow-400 font-bold active:scale-95 transition-transform mb-4">
+                    <i class="fa-solid fa-moon dark:hidden text-slate-500"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                    <span class="dark:text-white text-slate-600">Switch Appearance</span>
+                </button>
+                <div class="text-center">
+                    <a href="privacy.html" onclick="toggleMenu()"
+                        class="text-xs font-medium text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">Privacy
+                        Policy</a>
+                    <span class="text-slate-300 mx-2">•</span>
+                    <a href="#"
+                        class="text-xs font-medium text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">Terms</a>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- 2. HERO SECTION -->
-    <section class="relative pt-24 pb-12 lg:py-0 lg:h-[calc(100vh-80px)] flex items-center overflow-hidden hero-bg">
+    <!-- 2. HERO SECTION (Updated for Dark Mode) -->
+    <section
+        class="relative pt-8 pb-12 lg:py-12 lg:h-[calc(100vh-80px)] flex items-center overflow-hidden hero-bg transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center h-full">
-
                 <!-- Left Content -->
                 <div class="text-center lg:text-left z-10  flex flex-col justify-center">
-
-                    <!-- Feature Badge -->
                     <div
-                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-100 text-brand-700 text-xs font-bold mb-6 mx-auto lg:mx-0 w-fit animate-fade-in-up">
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/40 border border-brand-100 dark:border-brand-800 text-brand-700 dark:text-brand-300 text-xs font-bold mb-6 mx-auto lg:mx-0 w-fit animate-fade-in-up">
                         <span class="relative flex h-2 w-2">
                             <span
                                 class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
@@ -151,13 +386,11 @@
                         </span>
                         Preschool to Elementary | 100% Free
                     </div>
-
-                    <!-- H1 -->
                     <h1
-                        class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-extrabold text-paper-900 tracking-tight mb-6 leading-[1.1]">
+                        class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-extrabold text-paper-900 dark:text-white tracking-tight mb-6 leading-[1.1]">
                         Create AI Educational <br>
                         <span
-                            class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-accent-500">
+                            class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-accent-500 dark:from-brand-400 dark:to-accent-400">
                             Activity Sheets
                             <svg class="absolute w-full h-2 lg:h-3 -bottom-1 left-0 text-accent-400 opacity-80"
                                 viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -167,79 +400,67 @@
                         </span>
                         for Kids
                     </h1>
-
-                    <!-- Description -->
-                    <p class="text-lg text-slate-500 mb-8 font-medium max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                    <p
+                        class="text-base lg:text-lg text-slate-500 dark:text-slate-400 mb-8 font-medium max-w-lg mx-auto lg:mx-0 leading-relaxed">
                         The fastest way for parents and teachers to generate custom preschool and kindergarten
                         worksheets, puzzles, and crafts.
                     </p>
-
-                    <!-- CTAs -->
-                    <div class="flex flex-col sm:flex-row items-center gap-4 mb-10 justify-center lg:justify-start">
+                    <div class="flex flex-col sm:flex-row items-center gap-2 mb-0 justify-center lg:justify-start">
                         <a href="#generators"
-                            class="w-full sm:w-auto px-8 py-4 bg-paper-900 text-white rounded-3xl font-bold text-base hover:bg-black transition-all hover:-translate-y-1 shadow-xl flex items-center justify-center gap-2 animate-bounce delay-2000">
-                            <i class="fa-solid fa-wand-magic-sparkles text-accent-400"></i>
+                            class="w-full sm:w-auto px-8 py-3 lg:py-4 bg-paper-900 dark:bg-brand-500 text-white dark:text-paper-900 rounded-3xl font-bold text-base hover:bg-black dark:hover:bg-brand-400 transition-all hover:-translate-y-1 shadow-xl flex items-center justify-center gap-2 animate-bounce delay-2000">
+                            <i class="fa-solid fa-wand-magic-sparkles text-accent-400 dark:text-paper-900"></i>
                             Start Learning Fun
                         </a>
                         <a href="#quality"
-                            class="w-full sm:w-auto px-8 py-4 bg-white text-paper-900 border border-paper-200 rounded-3xl font-bold text-base hover:bg-brand-50 hover:border-brand-200 transition-all flex items-center justify-center gap-2 group">
+                            class="w-full sm:w-auto px-8 py-3 lg:py-4 bg-white dark:bg-slate-800 text-paper-900 dark:text-white border border-paper-200 dark:border-slate-700 rounded-3xl font-bold text-base hover:bg-brand-50 dark:hover:bg-slate-700 hover:border-brand-200 transition-all flex items-center justify-center gap-2 group">
                             <i
                                 class="fa-solid fa-graduation-cap text-brand-500 group-hover:scale-110 transition-transform"></i>
                             Why Educators Trust Us
                         </a>
                     </div>
                 </div>
-
-                <!-- Right Visual (Mockup) -->
+                <!-- Right Visual -->
                 <div class="relative  flex justify-center perspective-1000 h-full items-center">
-                    <!-- Decorative Elements -->
                     <div
-                        class="absolute -top-10 -right-10 w-24 h-24 bg-accent-100 rounded-full blur-2xl opacity-60 animate-pulse">
+                        class="absolute -top-10 -right-10 w-24 h-24 bg-accent-100 dark:bg-accent-900/40 rounded-full blur-2xl opacity-60 animate-pulse">
                     </div>
-                    <div class="absolute top-6 right-10 text-brand-300 text-4xl ">
-                        <i class="fa-solid fa-star rotate-12"></i>
-                    </div>
+                    <div class="absolute top-6 right-10 text-brand-300 dark:text-brand-600 text-4xl "><i
+                            class="fa-solid fa-star rotate-12"></i></div>
                     <div
-                        class="absolute -top-20 -right-20 w-72 h-72 bg-accent-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob">
-                        <span class="absolute -top-4 -left-1 text-[10px] font-mono text-slate-400">1</span>
+                        class="absolute -top-20 -right-20 w-72 h-72 bg-accent-200 dark:bg-accent-900/20 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-3xl opacity-30 animate-blob">
                     </div>
                     <div
-                        class="absolute -bottom-20 -left-20 w-72 h-72 bg-brand-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000">
+                        class="absolute -bottom-20 -left-20 w-72 h-72 bg-brand-100 dark:bg-brand-900/20 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-3xl opacity-30 animate-blob animation-delay-2000">
                     </div>
-                    <!-- 3D Card -->
                     <div
-                        class="relative w-full max-w-md lg:max-w-lg bg-paper-50 rounded-2xl shadow-pop border border-paper-100 p-2 lg:p-3 transform transition-transform duration-700 lg:rotate-y-6 lg:rotate-x-4 hover:rotate-y-0 hover:rotate-x-0 group">
-
+                        class="relative w-full max-w-md lg:max-w-lg bg-paper-50 dark:bg-slate-800 rounded-2xl shadow-pop border border-paper-100 dark:border-slate-700 p-2 lg:p-3 transform transition-transform duration-700 lg:rotate-y-6 lg:rotate-x-4 hover:rotate-y-0 hover:rotate-x-0 group">
                         <div class="flex items-center gap-1.5 px-2 mb-2">
                             <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
                             <div class="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
                             <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
                         </div>
                         <div
-                            class="flex h-[320px] lg:h-[420px] bg-paper-50 rounded-xl overflow-hidden border border-paper-100 relative">
-                            <!-- Input -->
-                            <div class="w-1/2 relative border-r border-paper-200 overflow-hidden">
+                            class="flex h-[320px] lg:h-[420px] bg-paper-50 dark:bg-slate-900 rounded-xl overflow-hidden border border-paper-100 dark:border-slate-800 relative">
+                            <div class="w-1/2 relative border-r border-paper-200 dark:border-slate-800 overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&amp;fit=crop&amp;q=80&amp;w=600"
-                                    alt="Thematic Printables Demo Input" class="w-full h-full object-cover">
+                                    alt="Demo Input" class="w-full h-full object-cover">
                                 <div
                                     class="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-[10px] font-bold shadow-sm text-slate-600">
                                     <i class="fa-solid fa-image mr-1 text-slate-400"></i> Original
                                 </div>
                             </div>
-                            <!-- Output -->
                             <div
-                                class="w-1/2 bg-white relative flex items-center justify-center texture-overlay relative">
-
-                                <i class="fa-solid fa-cat text-8xl lg:text-9xl text-slate-100 absolute"></i>
+                                class="w-1/2 bg-white dark:bg-slate-800 relative flex items-center justify-center texture-overlay relative">
+                                <i
+                                    class="fa-solid fa-cat text-8xl lg:text-9xl text-slate-100 dark:text-slate-700 absolute"></i>
                                 <div class="w-full relative">
-
                                     <div
-                                        class="absolute top-[40%] left-[50%] w-3 h-3 bg-brand-900 rounded-full border-2 border-white">
+                                        class="absolute top-[40%] left-[50%] w-3 h-3 bg-brand-900 rounded-full border-2 border-white dark:border-slate-800">
                                         <span
                                             class="absolute -top-4 -left-1 text-[10px] font-mono text-slate-400">2</span>
                                     </div>
                                     <div
-                                        class="absolute top-[60%] left-[40%] w-3 h-3 bg-brand-900 rounded-full border-2 border-white">
+                                        class="absolute top-[60%] left-[40%] w-3 h-3 bg-brand-900 rounded-full border-2 border-white dark:border-slate-800">
                                         <span
                                             class="absolute -top-4 -left-1 text-[10px] font-mono text-slate-400">3</span>
                                     </div>
@@ -249,387 +470,317 @@
                                     </svg>
                                 </div>
                                 <div
-                                    class="absolute bottom-4 right-4 bg-brand-100 text-brand-700 px-3 py-1 rounded-lg text-[10px] font-bold shadow-sm flex items-center">
+                                    class="absolute bottom-4 right-4 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 px-3 py-1 rounded-lg text-[10px] font-bold shadow-sm flex items-center">
                                     <i class="fa-solid fa-print mr-1"></i> Printable
                                 </div>
                             </div>
-                            <!-- Process Arrow -->
                             <div
-                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 bg-white rounded-full shadow-xl flex items-center justify-center z-20 border-4 border-paper-50 text-accent-500 text-xl lg:text-2xl">
+                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 bg-white dark:bg-slate-700 rounded-full shadow-xl flex items-center justify-center z-20 border-4 border-paper-50 dark:border-slate-800 text-accent-500 text-xl lg:text-2xl">
                                 <i class="fa-solid fa-arrow-right"></i>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </section><!-- ========================================= -->
-    <!-- 3. THE GENPRINTABLE DIFFERENCE (Rich Cards) -->
-    <!-- ========================================= -->
-    <section id="difference" class="py-24 relative overflow-hidden">
-        <!-- 背景装饰：极淡的流动光影 -->
-        <div class="absolute inset-0 bg-gradient-to-b from-white via-brand-50/30 to-white"></div>
+    </section>
+
+    <!-- 3. THE GENPRINTABLE DIFFERENCE (Updated) -->
+    <section id="difference" class="py-24 relative overflow-hidden dark:bg-slate-950">
         <div
-            class="absolute top-1/2 left-0 w-64 h-64 bg-brand-100 rounded-full blur-[80px] opacity-40 -translate-y-1/2">
+            class="absolute inset-0 bg-gradient-to-b from-white via-brand-50/30 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         </div>
         <div
-            class="absolute top-1/2 right-0 w-64 h-64 bg-accent-100 rounded-full blur-[80px] opacity-40 -translate-y-1/2">
+            class="absolute top-1/2 left-0 w-64 h-64 bg-brand-100 dark:bg-brand-900/20 rounded-full blur-[80px] opacity-40 -translate-y-1/2">
+        </div>
+        <div
+            class="absolute top-1/2 right-0 w-64 h-64 bg-accent-100 dark:bg-accent-900/20 rounded-full blur-[80px] opacity-40 -translate-y-1/2">
         </div>
 
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="text-center mb-20">
                 <span
-                    class="inline-block py-1 px-3 rounded-full bg-brand-100 text-brand-700 text-xs font-bold tracking-widest uppercase mb-4">Why
+                    class="inline-block py-1 px-3 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold tracking-widest uppercase mb-4">Why
                     Choose Us</span>
-                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900">The GenPrintable Difference</h2>
-                <p class="text-slate-500 mt-4 text-lg max-w-2xl mx-auto">
-                    We don't just generate PDFs; we create <span
-                        class="text-brand-600 font-semibold decoration-wavy underline decoration-brand-200">learning
-                        experiences</span>.
-                </p>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white">The GenPrintable
+                    Difference</h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-4 text-lg max-w-2xl mx-auto">We don't just generate
+                    PDFs; we create <span
+                        class="text-brand-600 dark:text-brand-400 font-semibold decoration-wavy underline decoration-brand-200 dark:decoration-brand-800">learning
+                        experiences</span>.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-
-                <!-- Card 1: Smart Content (Green/Brand Theme) -->
-                <!-- 现代化设计：毛玻璃效果 + 内部渐变 -->
+                <!-- Card 1 -->
                 <div
-                    class="relative group p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/40 hover:-translate-y-2 hover:shadow-brand-500/10 transition-all duration-300 overflow-hidden">
-                    <!-- 悬停时的背景光晕 -->
+                    class="relative group p-8 rounded-[2.5rem] bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-xl shadow-slate-200/40 dark:shadow-none hover:-translate-y-2 hover:shadow-brand-500/10 transition-all duration-300 overflow-hidden">
                     <div
-                        class="absolute inset-0 bg-gradient-to-br from-brand-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        class="absolute inset-0 bg-gradient-to-br from-brand-50/50 to-transparent dark:from-brand-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
-
                     <div class="relative z-10">
                         <div class="w-24 h-24 mx-auto mb-8 relative">
-                            <!-- 图标背景：双层圆环动画 -->
                             <div
-                                class="absolute inset-0 bg-brand-100 rounded-full group-hover:scale-110 transition-transform duration-500">
+                                class="absolute inset-0 bg-brand-100 dark:bg-brand-900/30 rounded-full group-hover:scale-110 transition-transform duration-500">
                             </div>
                             <div
-                                class="absolute inset-2 bg-white rounded-full flex items-center justify-center text-4xl text-brand-500 shadow-sm">
+                                class="absolute inset-2 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center text-4xl text-brand-500 shadow-sm">
                                 <i class="fa-solid fa-brain"></i>
                             </div>
                         </div>
                         <h3
-                            class="font-display font-bold text-2xl mb-4 text-slate-900 group-hover:text-brand-600 transition-colors">
+                            class="font-display font-bold text-2xl mb-4 text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                             AI Smart Content</h3>
-                        <p class="text-slate-500 leading-relaxed">
-                            Generate unique themes, custom tracing sentences, and intelligent dot sequences based on
-                            your specific input.
-                        </p>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">Generate unique themes, custom
+                            tracing sentences, and intelligent dot sequences based on your specific input.</p>
                     </div>
                 </div>
-
-                <!-- Card 2: Curriculum (Purple/Accent Theme) -->
+                <!-- Card 2 -->
                 <div
-                    class="relative group p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/40 hover:-translate-y-2 hover:shadow-accent-500/10 transition-all duration-300 overflow-hidden">
+                    class="relative group p-8 rounded-[2.5rem] bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-xl shadow-slate-200/40 dark:shadow-none hover:-translate-y-2 hover:shadow-accent-500/10 transition-all duration-300 overflow-hidden">
                     <div
-                        class="absolute inset-0 bg-gradient-to-br from-accent-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        class="absolute inset-0 bg-gradient-to-br from-accent-50/50 to-transparent dark:from-accent-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
-
                     <div class="relative z-10">
                         <div class="w-24 h-24 mx-auto mb-8 relative">
                             <div
-                                class="absolute inset-0 bg-accent-100 rounded-full group-hover:scale-110 transition-transform duration-500">
+                                class="absolute inset-0 bg-accent-100 dark:bg-accent-900/30 rounded-full group-hover:scale-110 transition-transform duration-500">
                             </div>
                             <div
-                                class="absolute inset-2 bg-white rounded-full flex items-center justify-center text-4xl text-accent-500 shadow-sm">
+                                class="absolute inset-2 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center text-4xl text-accent-500 shadow-sm">
                                 <i class="fa-solid fa-graduation-cap"></i>
                             </div>
                         </div>
                         <h3
-                            class="font-display font-bold text-2xl mb-4 text-slate-900 group-hover:text-accent-500 transition-colors">
+                            class="font-display font-bold text-2xl mb-4 text-slate-900 dark:text-white group-hover:text-accent-500 dark:group-hover:text-accent-400 transition-colors">
                             Curriculum Aligned</h3>
-                        <p class="text-slate-500 leading-relaxed">
-                            Worksheets designed to align with early learning milestones, strictly focusing on fine motor
-                            skills and letter recognition.
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">Worksheets designed to align with
+                            early learning milestones, strictly focusing on fine motor skills and letter recognition.
                         </p>
                     </div>
                 </div>
-
-                <!-- Card 3: Print Quality (Blue/Sky Theme) -->
+                <!-- Card 3 -->
                 <div
-                    class="relative group p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/40 hover:-translate-y-2 hover:shadow-sky-500/10 transition-all duration-300 overflow-hidden">
+                    class="relative group p-8 rounded-[2.5rem] bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-xl shadow-slate-200/40 dark:shadow-none hover:-translate-y-2 hover:shadow-sky-500/10 transition-all duration-300 overflow-hidden">
                     <div
-                        class="absolute inset-0 bg-gradient-to-br from-sky-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        class="absolute inset-0 bg-gradient-to-br from-sky-50/50 to-transparent dark:from-sky-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
-
                     <div class="relative z-10">
                         <div class="w-24 h-24 mx-auto mb-8 relative">
                             <div
-                                class="absolute inset-0 bg-sky-100 rounded-full group-hover:scale-110 transition-transform duration-500">
+                                class="absolute inset-0 bg-sky-100 dark:bg-sky-900/30 rounded-full group-hover:scale-110 transition-transform duration-500">
                             </div>
                             <div
-                                class="absolute inset-2 bg-white rounded-full flex items-center justify-center text-4xl text-sky-500 shadow-sm">
+                                class="absolute inset-2 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center text-4xl text-sky-500 shadow-sm">
                                 <i class="fa-solid fa-print"></i>
                             </div>
                         </div>
                         <h3
-                            class="font-display font-bold text-2xl mb-4 text-slate-900 group-hover:text-sky-500 transition-colors">
+                            class="font-display font-bold text-2xl mb-4 text-slate-900 dark:text-white group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors">
                             Print & Play PDFs</h3>
-                        <p class="text-slate-500 leading-relaxed">
-                            Instant, high-resolution PDFs. Print-ready, no watermarks, designed for smooth at-home or
-                            classroom printing.
-                        </p>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">Instant, high-resolution PDFs.
+                            Print-ready, no watermarks, designed for smooth at-home or classroom printing.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========================================= -->
-    <!-- 4. GENERATORS GRID (Modern App Store Style) -->
-    <!-- ========================================= -->
-    <section id="generators" class="py-24 bg-slate-50/80 relative">
-        <!-- 装饰：网格背景 -->
+    <!-- 4. GENERATORS GRID (Updated) -->
+    <section id="generators" class="py-24 bg-slate-50/80 dark:bg-slate-900 relative">
         <div class="absolute inset-0"
             style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 30px 30px; opacity: 0.5;">
         </div>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-display font-extrabold text-slate-900 mb-6">Start Generating</h2>
-                <p class="text-lg text-slate-500">Select a tool below to launch the creative studio.</p>
+                <h2 class="text-4xl md:text-5xl font-display font-extrabold text-slate-900 dark:text-white mb-6">Start
+                    Generating</h2>
+                <p class="text-lg text-slate-500 dark:text-slate-400">Select a tool below to launch the creative studio.
+                </p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- 样式策略：每个卡片头部带有柔和的色块，模仿“App Icon”展示 -->
-
-                <!-- 1. Connect the Dots (Emerald/Math) -->
+                <!-- 1. Connect the Dots -->
                 <div
-                    class="group relative bg-white rounded-[2rem] p-2 border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 hover:-translate-y-1">
-                    <div class="bg-brand-50 rounded-[1.5rem] p-8 h-full flex flex-col relative overflow-hidden">
-                        <!-- 装饰背景图案 -->
-                        <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-1/3 -translate-y-1/3">
-                            <i class="fa-solid fa-circle-nodes text-9xl text-brand-600"></i>
-                        </div>
-
+                    class="group relative bg-white dark:bg-slate-800 rounded-[2rem] p-2 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="bg-brand-50 dark:bg-brand-900/20 rounded-[1.5rem] p-8 h-full flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-1/3 -translate-y-1/3"><i
+                                class="fa-solid fa-circle-nodes text-9xl text-brand-600"></i></div>
                         <div class="relative z-10 flex flex-col h-full">
                             <div class="flex justify-between items-start mb-6">
                                 <div
-                                    class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-3xl text-brand-500 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                                    class="w-16 h-16 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center text-3xl text-brand-500 shadow-sm group-hover:scale-110 transition-transform duration-300">
                                     <i class="fa-solid fa-circle-nodes"></i>
                                 </div>
                                 <span
-                                    class="bg-white/80 backdrop-blur text-brand-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-brand-100">Math</span>
+                                    class="bg-white/80 dark:bg-slate-700/80 backdrop-blur text-brand-700 dark:text-brand-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-brand-100 dark:border-brand-800">Math</span>
                             </div>
-
                             <h3
-                                class="text-2xl font-display font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">
+                                class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                                 Connect Dots</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8 flex-1">
-                                Turn any photo into a custom dot-to-dot puzzle for number sequence practice.
-                            </p>
-
-                            <!-- 现代化的按钮 -->
+                            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-1">Turn any
+                                photo into a custom dot-to-dot puzzle for number sequence practice.</p>
                             <a href="#"
-                                class="w-full py-3 bg-white text-brand-700 font-bold rounded-xl text-center shadow-sm hover:bg-brand-500 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:shadow-md">
-                                Create Puzzle <i class="fa-solid fa-arrow-right text-xs"></i>
-                            </a>
+                                class="w-full py-3 bg-white dark:bg-slate-700 text-brand-700 dark:text-brand-300 font-bold rounded-xl text-center shadow-sm hover:bg-brand-500 hover:text-white dark:hover:bg-brand-500 dark:hover:text-white transition-all flex items-center justify-center gap-2 group-hover:shadow-md">Create
+                                Puzzle <i class="fa-solid fa-arrow-right text-xs"></i></a>
                         </div>
                     </div>
                 </div>
-
-                <!-- 2. Crafts (Purple/Art) -->
+                <!-- 2. Crafts -->
                 <div
-                    class="group relative bg-white rounded-[2rem] p-2 border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-accent-500/10 transition-all duration-300 hover:-translate-y-1">
-                    <div class="bg-accent-50 rounded-[1.5rem] p-8 h-full flex flex-col relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-1/3 -translate-y-1/3">
-                            <i class="fa-solid fa-scissors text-9xl text-accent-600"></i>
-                        </div>
-
+                    class="group relative bg-white dark:bg-slate-800 rounded-[2rem] p-2 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:shadow-accent-500/10 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="bg-accent-50 dark:bg-accent-900/20 rounded-[1.5rem] p-8 h-full flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-1/3 -translate-y-1/3"><i
+                                class="fa-solid fa-scissors text-9xl text-accent-600"></i></div>
                         <div class="relative z-10 flex flex-col h-full">
                             <div class="flex justify-between items-start mb-6">
                                 <div
-                                    class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-3xl text-accent-500 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                                    class="w-16 h-16 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center text-3xl text-accent-500 shadow-sm group-hover:scale-110 transition-transform duration-300">
                                     <i class="fa-solid fa-scissors"></i>
                                 </div>
                                 <span
-                                    class="bg-white/80 backdrop-blur text-accent-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-accent-100">Art</span>
+                                    class="bg-white/80 dark:bg-slate-700/80 backdrop-blur text-accent-600 dark:text-accent-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-accent-100 dark:border-accent-800">Art</span>
                             </div>
-
                             <h3
-                                class="text-2xl font-display font-bold text-slate-900 mb-3 group-hover:text-accent-600 transition-colors">
+                                class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-3 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
                                 Paper Crafts</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8 flex-1">
-                                Build paper crafts with AI-generated parts. Perfect for fine motor skills development.
-                            </p>
-
+                            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-1">Build
+                                paper crafts with AI-generated parts. Perfect for fine motor skills development.</p>
                             <a href="#"
-                                class="w-full py-3 bg-white text-accent-700 font-bold rounded-xl text-center shadow-sm hover:bg-accent-500 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:shadow-md">
-                                Make Crafts <i class="fa-solid fa-arrow-right text-xs"></i>
-                            </a>
+                                class="w-full py-3 bg-white dark:bg-slate-700 text-accent-700 dark:text-accent-300 font-bold rounded-xl text-center shadow-sm hover:bg-accent-500 hover:text-white dark:hover:bg-accent-500 dark:hover:text-white transition-all flex items-center justify-center gap-2 group-hover:shadow-md">Make
+                                Crafts <i class="fa-solid fa-arrow-right text-xs"></i></a>
                         </div>
                     </div>
                 </div>
-
-                <!-- 3. Name Tracing (Blue/Writing) -->
+                <!-- 3. Name Tracing -->
                 <div
-                    class="group relative bg-white rounded-[2rem] p-2 border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-fun-blue/10 transition-all duration-300 hover:-translate-y-1">
-                    <div class="bg-sky-50 rounded-[1.5rem] p-8 h-full flex flex-col relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-1/3 -translate-y-1/3">
-                            <i class="fa-solid fa-pen-fancy text-9xl text-sky-500"></i>
-                        </div>
-
+                    class="group relative bg-white dark:bg-slate-800 rounded-[2rem] p-2 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:shadow-fun-blue/10 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="bg-sky-50 dark:bg-sky-900/20 rounded-[1.5rem] p-8 h-full flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-1/3 -translate-y-1/3"><i
+                                class="fa-solid fa-pen-fancy text-9xl text-sky-500"></i></div>
                         <div class="relative z-10 flex flex-col h-full">
                             <div class="flex justify-between items-start mb-6">
                                 <div
-                                    class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-3xl text-fun-blue shadow-sm group-hover:scale-110 transition-transform duration-300">
+                                    class="w-16 h-16 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center text-3xl text-fun-blue shadow-sm group-hover:scale-110 transition-transform duration-300">
                                     <i class="fa-solid fa-pen-fancy  text-sky-500"></i>
                                 </div>
                                 <span
-                                    class="bg-white/80 backdrop-blur text-sky-500 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-sky-100">Writing</span>
+                                    class="bg-white/80 dark:bg-slate-700/80 backdrop-blur text-sky-500 dark:text-sky-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-sky-100 dark:border-sky-800">Writing</span>
                             </div>
-
                             <h3
-                                class="text-2xl font-display font-bold text-slate-900 mb-3 group-hover:text-sky-500 transition-colors">
+                                class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-3 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors">
                                 Name Tracing</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8 flex-1">
-                                Create custom name tracing sheets with AI-generated context sentences for beginners.
-                            </p>
-
+                            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-1">Create
+                                custom name tracing sheets with AI-generated context sentences for beginners.</p>
                             <a href="#"
-                                class="w-full py-3 bg-white text-sky-500 font-bold rounded-xl text-center shadow-sm hover:bg-sky-500 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:shadow-md">
-                                Create Worksheet <i class="fa-solid fa-arrow-right text-xs"></i>
-                            </a>
+                                class="w-full py-3 bg-white dark:bg-slate-700 text-sky-500 dark:text-sky-300 font-bold rounded-xl text-center shadow-sm hover:bg-sky-500 hover:text-white dark:hover:bg-sky-500 dark:hover:text-white transition-all flex items-center justify-center gap-2 group-hover:shadow-md">Create
+                                Worksheet <i class="fa-solid fa-arrow-right text-xs"></i></a>
                         </div>
                     </div>
                 </div>
-
-                <!-- 4. Color by Number (Pink/Coloring) -->
+                <!-- 4. Color by Number -->
                 <div
-                    class="group relative bg-white rounded-[2rem] p-2 border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-fun-pink/10 transition-all duration-300 hover:-translate-y-1">
-                    <div class="bg-pink-50 rounded-[1.5rem] p-8 h-full flex flex-col relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-1/3 -translate-y-1/3">
-                            <i class="fa-solid fa-palette text-9xl text-fun-pink"></i>
-                        </div>
-
+                    class="group relative bg-white dark:bg-slate-800 rounded-[2rem] p-2 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:shadow-fun-pink/10 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="bg-pink-50 dark:bg-pink-900/20 rounded-[1.5rem] p-8 h-full flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-1/3 -translate-y-1/3"><i
+                                class="fa-solid fa-palette text-9xl text-fun-pink"></i></div>
                         <div class="relative z-10 flex flex-col h-full">
                             <div class="flex justify-between items-start mb-6">
                                 <div
-                                    class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-3xl text-fun-pink shadow-sm group-hover:scale-110 transition-transform duration-300">
+                                    class="w-16 h-16 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center text-3xl text-fun-pink shadow-sm group-hover:scale-110 transition-transform duration-300">
                                     <i class="fa-solid fa-palette text-pink-500"></i>
                                 </div>
                                 <span
-                                    class="bg-white/80 backdrop-blur text-pink-500 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-pink-100">Art</span>
+                                    class="bg-white/80 dark:bg-slate-700/80 backdrop-blur text-pink-500 dark:text-pink-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-pink-100 dark:border-pink-800">Art</span>
                             </div>
-
                             <h3
-                                class="text-2xl font-display font-bold text-slate-900 mb-3 group-hover:text-pink-500 transition-colors">
+                                class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-3 group-hover:text-pink-500 dark:group-hover:text-pink-400 transition-colors">
                                 Color by Number</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8 flex-1">
-                                Convert personal photos into paint-by-number pages using AI color segmentation.
-                            </p>
-
+                            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-1">Convert
+                                personal photos into paint-by-number pages using AI color segmentation.</p>
                             <a href="#"
-                                class="w-full py-3 bg-white text-pink-500 font-bold rounded-xl text-center shadow-sm hover:bg-pink-500 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:shadow-md">
-                                Convert Photo <i class="fa-solid fa-arrow-right text-xs"></i>
-                            </a>
+                                class="w-full py-3 bg-white dark:bg-slate-700 text-pink-500 dark:text-pink-300 font-bold rounded-xl text-center shadow-sm hover:bg-pink-500 hover:text-white dark:hover:bg-pink-500 dark:hover:text-white transition-all flex items-center justify-center gap-2 group-hover:shadow-md">Convert
+                                Photo <i class="fa-solid fa-arrow-right text-xs"></i></a>
                         </div>
                     </div>
                 </div>
-
-                <!-- 5. Maze (Yellow/Logic) -->
+                <!-- 5. Maze -->
                 <div
-                    class="group relative bg-white rounded-[2rem] p-2 border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-fun-yellow/10 transition-all duration-300 hover:-translate-y-1">
-                    <div class="bg-amber-50 rounded-[1.5rem] p-8 h-full flex flex-col relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-1/3 -translate-y-1/3">
-                            <i class="fa-solid fa-diamond-turn-right text-9xl text-yellow-600"></i>
-                        </div>
-
+                    class="group relative bg-white dark:bg-slate-800 rounded-[2rem] p-2 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:shadow-fun-yellow/10 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="bg-amber-50 dark:bg-amber-900/20 rounded-[1.5rem] p-8 h-full flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-1/3 -translate-y-1/3"><i
+                                class="fa-solid fa-diamond-turn-right text-9xl text-yellow-600"></i></div>
                         <div class="relative z-10 flex flex-col h-full">
                             <div class="flex justify-between items-start mb-6">
                                 <div
-                                    class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-3xl text-fun-yellow shadow-sm group-hover:scale-110 transition-transform duration-300">
+                                    class="w-16 h-16 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center text-3xl text-fun-yellow shadow-sm group-hover:scale-110 transition-transform duration-300">
                                     <i class="fa-solid fa-diamond-turn-right text-yellow-600"></i>
                                 </div>
                                 <span
-                                    class="bg-white/80 backdrop-blur text-yellow-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-amber-100">Logic</span>
+                                    class="bg-white/80 dark:bg-slate-700/80 backdrop-blur text-yellow-600 dark:text-yellow-400 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-amber-100 dark:border-amber-800">Logic</span>
                             </div>
-
                             <h3
-                                class="text-2xl font-display font-bold text-slate-900 mb-3 group-hover:text-yellow-600 transition-colors">
+                                class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-3 group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">
                                 Maze Generator</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8 flex-1">
-                                Create themed mazes (animals, letters) with adjustable difficulty for children.
-                            </p>
-
+                            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-1">Create
+                                themed mazes (animals, letters) with adjustable difficulty for children.</p>
                             <a href="#"
-                                class="w-full py-3 bg-white text-yellow-600 font-bold rounded-xl text-center shadow-sm hover:bg-yellow-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:shadow-md">
-                                Generate Maze <i class="fa-solid fa-arrow-right text-xs"></i>
-                            </a>
+                                class="w-full py-3 bg-white dark:bg-slate-700 text-yellow-600 dark:text-yellow-400 font-bold rounded-xl text-center shadow-sm hover:bg-yellow-600 hover:text-white dark:hover:bg-yellow-600 dark:hover:text-white transition-all flex items-center justify-center gap-2 group-hover:shadow-md">Generate
+                                Maze <i class="fa-solid fa-arrow-right text-xs"></i></a>
                         </div>
                     </div>
                 </div>
-
-                <!-- 6. Word Search (Orange/Literacy) -->
+                <!-- 6. Word Search -->
                 <div
-                    class="group relative bg-white rounded-[2rem] p-2 border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-orange-400/10 transition-all duration-300 hover:-translate-y-1">
-                    <div class="bg-orange-50 rounded-[1.5rem] p-8 h-full flex flex-col relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-1/3 -translate-y-1/3">
-                            <i class="fa-solid fa-magnifying-glass text-9xl text-orange-400"></i>
-                        </div>
-
+                    class="group relative bg-white dark:bg-slate-800 rounded-[2rem] p-2 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl hover:shadow-orange-400/10 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="bg-orange-50 dark:bg-orange-900/20 rounded-[1.5rem] p-8 h-full flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-8 opacity-10 transform translate-x-1/3 -translate-y-1/3"><i
+                                class="fa-solid fa-magnifying-glass text-9xl text-orange-400"></i></div>
                         <div class="relative z-10 flex flex-col h-full">
                             <div class="flex justify-between items-start mb-6">
                                 <div
-                                    class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-3xl text-orange-400 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                                    class="w-16 h-16 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center text-3xl text-orange-400 shadow-sm group-hover:scale-110 transition-transform duration-300">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </div>
                                 <span
-                                    class="bg-white/80 backdrop-blur text-orange-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-orange-100">Vocab</span>
+                                    class="bg-white/80 dark:bg-slate-700/80 backdrop-blur text-orange-600 dark:text-orange-400 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-orange-100 dark:border-orange-800">Vocab</span>
                             </div>
-
                             <h3
-                                class="text-2xl font-display font-bold text-slate-900 mb-3 group-hover:text-orange-500 transition-colors">
+                                class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-3 group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">
                                 Word Search</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed mb-8 flex-1">
-                                Input a subject, and AI expands the vocabulary list to create thematic classroom
-                                puzzles.
-                            </p>
-
+                            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-1">Input a
+                                subject, and AI expands the vocabulary list to create thematic classroom puzzles.</p>
                             <a href="#"
-                                class="w-full py-3 bg-white text-orange-500 font-bold rounded-xl text-center shadow-sm hover:bg-orange-400 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:shadow-md">
-                                Make Puzzle <i class="fa-solid fa-arrow-right text-xs"></i>
-                            </a>
+                                class="w-full py-3 bg-white dark:bg-slate-700 text-orange-500 dark:text-orange-400 font-bold rounded-xl text-center shadow-sm hover:bg-orange-400 hover:text-white dark:hover:bg-orange-400 dark:hover:text-white transition-all flex items-center justify-center gap-2 group-hover:shadow-md">Make
+                                Puzzle <i class="fa-solid fa-arrow-right text-xs"></i></a>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- ========================================= -->
-    <!-- 5. QUALITY & CTA (Immersive Dark Mode) -->
-    <!-- ========================================= -->
-    <section id="quality" class="py-8 relative overflow-hidden bg-brand-700">
-
-        <!-- 背景氛围：深邃的极光效果 -->
+    <!-- 5. QUALITY (Dark mode handled via utility classes or existing dark background) -->
+    <section id="quality"
+        class="py-8 relative overflow-hidden bg-brand-700 dark:bg-slate-950 border-t dark:border-slate-800">
+        <!-- Kept original BG for brand identity but updated right column card transparency -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none">
-            <!-- 绿色光晕 -->
             <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-600/30 rounded-full blur-[100px] mix-blend-screen animate-pulse"
                 style="animation-duration: 4s;"></div>
-            <!-- 紫色光晕 (与次要色呼应) -->
             <div
                 class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent-600/20 rounded-full blur-[80px] mix-blend-screen">
             </div>
-            <!-- 网格纹理 -->
             <div class="absolute inset-0 opacity-10"
                 style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;">
             </div>
         </div>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-                <!-- Left Column: Content & Trust -->
                 <div class="text-center lg:text-left">
-
-                    <!-- Icon Badge -->
                     <div
                         class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-800 border border-brand-700 shadow-lg shadow-brand-900/50 mb-8 relative group">
                         <div
@@ -637,22 +788,15 @@
                         </div>
                         <i class="fa-solid fa-award text-3xl text-brand-300 text-white relative z-10"></i>
                     </div>
-
-                    <h3 class="text-3xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
-                        Curated for <br>
-                        <span
+                    <h3 class="text-3xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">Curated for
+                        <br><span
                             class="text-transparent bg-clip-text bg-gradient-to-r from-brand-200 to-accent-200">Quality
                             Learning</span>
                     </h3>
-
-                    <p class="text-brand-100 text-lg mb-10 leading-relaxed opacity-90 max-w-lg mx-auto lg:mx-0">
-                        Designed in consultation with experienced educators to ensure alignment with core early
-                        childhood learning standards.
-                    </p>
-
-                    <!-- Modernized Feature Grid (取代简单的 ul) -->
+                    <p class="text-brand-100 text-lg mb-10 leading-relaxed opacity-90 max-w-lg mx-auto lg:mx-0">Designed
+                        in consultation with experienced educators to ensure alignment with core early childhood
+                        learning standards.</p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
-                        <!-- Feature 1 -->
                         <div
                             class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
                             <div
@@ -664,8 +808,6 @@
                                 <p class="text-xs text-brand-200 mt-1">Focus on developmental milestones.</p>
                             </div>
                         </div>
-
-                        <!-- Feature 2 -->
                         <div
                             class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
                             <div
@@ -679,637 +821,312 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Right Column: CTA Glass Card -->
                 <div class="relative perspective-1000">
-                    <!-- 漂浮装饰元素 -->
                     <div
                         class="absolute -top-6 -right-6 w-20 h-20 bg-accent-500 rounded-full blur-xl opacity-40 animate-bounce delay-700">
                     </div>
                     <div
                         class="absolute -bottom-6 -left-6 w-24 h-24 bg-brand-500 rounded-full blur-xl opacity-40 animate-bounce">
                     </div>
-
-                    <!-- Card Body -->
                     <div
                         class="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-[2.5rem] p-10 md:p-14 text-center shadow-2xl overflow-hidden transform transition-transform hover:scale-[1.02] duration-500">
-
-                        <!-- 内部光效 -->
                         <div
                             class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent opacity-50 pointer-events-none">
                         </div>
-
                         <div class="relative z-10">
                             <h3 class="text-3xl font-display font-bold text-white mb-4">Ready to try?</h3>
-                            <p class="text-brand-100 text-lg mb-8">
-                                It's <span class="font-bold text-white border-b-2 border-brand-500">100% free</span> for
-                                home and classroom use. <br>No sign-up required.
-                            </p>
-
-                            <!-- 按钮：纯白底色在深色背景上最为高级 -->
+                            <p class="text-brand-100 text-lg mb-8">It's <span
+                                    class="font-bold text-white border-b-2 border-brand-500">100% free</span> for home
+                                and classroom use. <br>No sign-up required.</p>
                             <a href="#generators"
                                 class="group relative inline-flex items-center justify-center w-full py-4 bg-white text-brand-900 rounded-xl font-bold text-lg hover:shadow-[0_0_30px_-5px_rgba(255,255,255,0.4)] transition-all overflow-hidden">
-                                <span class="relative z-10 flex items-center gap-2">
-                                    Go to Free Generators
-                                    <i
-                                        class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                                </span>
+                                <span class="relative z-10 flex items-center gap-2">Go to Free Generators <i
+                                        class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></span>
                             </a>
-
-                            <p class="mt-6 text-xs text-brand-200/60 font-medium tracking-wide uppercase">
-                                <i class="fa-solid fa-lock mr-1"></i> Secure & Private
-                            </p>
+                            <p class="mt-6 text-xs text-brand-200/60 font-medium tracking-wide uppercase"><i
+                                    class="fa-solid fa-lock mr-1"></i> Secure & Private</p>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
-    <!-- ========================================= -->
-    <!-- 6. FAQ SECTION (Interactive Accordion) -->
-    <!-- ========================================= -->
-    <!-- ========================================= -->
-    <!-- 7. SCROLLING TESTIMONIALS (Infinite Marquee) -->
-    <!-- ========================================= -->
-    <section class="py-24 bg-white relative overflow-hidden border-t border-slate-50">
 
+    <!-- 7. SCROLLING TESTIMONIALS (Updated) -->
+    <section
+        class="py-24 bg-white dark:bg-slate-950 relative overflow-hidden border-t border-slate-50 dark:border-slate-800">
         <div class="text-center mb-16 px-4">
-            <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-4">Loved by Parents & Teachers</h2>
-            <p class="text-slate-500 text-lg">Join 5,000+ creators making learning magical.</p>
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4">Loved by Parents
+                & Teachers</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-lg">Join 5,000+ creators making learning magical.</p>
         </div>
-
-        <!-- 容器：控制遮罩和宽度 -->
         <div class="relative max-w-[100vw] overflow-hidden mask-gradient">
-
-            <!-- Row 1: Scroll Left -->
             <div class="flex gap-6 w-max animate-scroll-left hover:[animation-play-state:paused]">
-                <!-- 真实卡片组 (Group A) -->
                 <div class="flex gap-6">
-                    <!-- Review 1 -->
-                    <div class="w-[350px] p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
+                    <div
+                        class="w-[350px] p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
                         <div class="flex items-center gap-3 mb-4">
                             <div
-                                class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold">
+                                class="w-10 h-10 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
                                 S</div>
                             <div>
-                                <div class="font-bold text-slate-900 text-sm">Sarah Jenkins</div>
-                                <div class="text-xs text-slate-500">Kindergarten Teacher</div>
+                                <div class="font-bold text-slate-900 dark:text-white text-sm">Sarah Jenkins</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Kindergarten Teacher</div>
                             </div>
                             <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
                                     class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                     class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                         </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"The bulk generation for name tracing is a
-                            lifesaver. I created 25 unique worksheets for my class in literally 2 minutes."</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">"The bulk generation for
+                            name tracing is a lifesaver. I created 25 unique worksheets for my class in literally 2
+                            minutes."</p>
                     </div>
-                    <!-- Review 2 -->
-                    <div class="w-[350px] p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
+                    <div
+                        class="w-[350px] p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
                         <div class="flex items-center gap-3 mb-4">
                             <div
-                                class="w-10 h-10 rounded-full bg-accent-100 text-accent-600 flex items-center justify-center font-bold">
+                                class="w-10 h-10 rounded-full bg-accent-100 dark:bg-accent-900/30 text-accent-600 dark:text-accent-400 flex items-center justify-center font-bold">
                                 M</div>
                             <div>
-                                <div class="font-bold text-slate-900 text-sm">Mike T.</div>
-                                <div class="text-xs text-slate-500">Dad of two</div>
+                                <div class="font-bold text-slate-900 dark:text-white text-sm">Mike T.</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Dad of two</div>
                             </div>
                             <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
                                     class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                     class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                         </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"Used the Connect the Dots tool with a picture
-                            of our family dog. The kids went crazy for it! Such a clever AI tool."</p>
-                    </div>
-                    <!-- Review 3 -->
-                    <div class="w-[350px] p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">
-                                E</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">Emily R.</div>
-                                <div class="text-xs text-slate-500">Homeschool Mom</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"Finally, a worksheet generator that doesn't
-                            look outdated. The designs are clean and the AI context sentences are hilarious."</p>
-                    </div>
-                    <!-- Review 4 -->
-                    <div class="w-[350px] p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold">
-                                J</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">Jessica L.</div>
-                                <div class="text-xs text-slate-500">Art Teacher</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"The paper crafts generator is underrated. It
-                            saves me so much prep time for our Friday art sessions."</p>
-                    </div>
-                </div>
-                <!-- 复制一套卡片以实现无缝循环 (Duplicate for Loop) -->
-                <div class="flex gap-6" aria-hidden="true">
-                    <div class="w-[350px] p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold">
-                                S</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">Sarah Jenkins</div>
-                                <div class="text-xs text-slate-500">Kindergarten Teacher</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"The bulk generation for name tracing is a
-                            lifesaver. I created 25 unique worksheets for my class in literally 2 minutes."</p>
-                    </div>
-                    <div class="w-[350px] p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-accent-100 text-accent-600 flex items-center justify-center font-bold">
-                                M</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">Mike T.</div>
-                                <div class="text-xs text-slate-500">Dad of two</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"Used the Connect the Dots tool with a picture
-                            of our family dog. The kids went crazy for it! Such a clever AI tool."</p>
-                    </div>
-                    <div class="w-[350px] p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">
-                                E</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">Emily R.</div>
-                                <div class="text-xs text-slate-500">Homeschool Mom</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"Finally, a worksheet generator that doesn't
-                            look outdated. The designs are clean and the AI context sentences are hilarious."</p>
-                    </div>
-                    <div class="w-[350px] p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold">
-                                J</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">Jessica L.</div>
-                                <div class="text-xs text-slate-500">Art Teacher</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"The paper crafts generator is underrated. It
-                            saves me so much prep time for our Friday art sessions."</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Row 2: Scroll Right (Optional, creates "busy" effect) -->
-            <div class="flex gap-6 w-max mt-6 animate-scroll-right hover:[animation-play-state:paused]">
-                <!-- Content similar to Row 1 but different order/users -->
-                <!-- Real Cards -->
-                <div class="flex gap-6">
-                    <div class="w-[350px] p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold">
-                                D</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">David Chen</div>
-                                <div class="text-xs text-slate-500">Preschool Tutor</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"The Maze generator is fantastic. I can adjust
-                            the difficulty for different age groups instantly."</p>
-                    </div>
-                    <div class="w-[350px] p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold">
-                                A</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">Amanda P.</div>
-                                <div class="text-xs text-slate-500">Mom of three</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"My kids love seeing their names in the
-                            stories. It makes writing practice so much less of a chore!"</p>
-                    </div>
-                    <div class="w-[350px] p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold">
-                                R</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">Rachel Green</div>
-                                <div class="text-xs text-slate-500">Elementary Teacher</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"I recommend GenPrintable to all my
-                            parent-teacher conferences. It's safe, free, and high quality."</p>
-                    </div>
-                    <div class="w-[350px] p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold">
-                                T</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">Tom W.</div>
-                                <div class="text-xs text-slate-500">Grandparent</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"Very easy to use. I made a puzzle for my
-                            grandson's birthday party and he loved it."</p>
-                    </div>
-                </div>
-                <!-- Duplicate for Loop -->
-                <div class="flex gap-6" aria-hidden="true">
-                    <div class="w-[350px] p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold">
-                                D</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">David Chen</div>
-                                <div class="text-xs text-slate-500">Preschool Tutor</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"The Maze generator is fantastic. I can adjust
-                            the difficulty for different age groups instantly."</p>
-                    </div>
-                    <div class="w-[350px] p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold">
-                                A</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">Amanda P.</div>
-                                <div class="text-xs text-slate-500">Mom of three</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"My kids love seeing their names in the
-                            stories. It makes writing practice so much less of a chore!"</p>
-                    </div>
-                    <div class="w-[350px] p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold">
-                                R</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">Rachel Green</div>
-                                <div class="text-xs text-slate-500">Elementary Teacher</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"I recommend GenPrintable to all my
-                            parent-teacher conferences. It's safe, free, and high quality."</p>
-                    </div>
-                    <div class="w-[350px] p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold">
-                                T</div>
-                            <div>
-                                <div class="font-bold text-slate-900 text-sm">Tom W.</div>
-                                <div class="text-xs text-slate-500">Grandparent</div>
-                            </div>
-                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">"Very easy to use. I made a puzzle for my
-                            grandson's birthday party and he loved it."</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- CSS for Infinite Scroll Animation -->
-        <style>
-            /* 关键：左右两侧的渐变遮罩，让滚动看起来更自然 */
-            .mask-gradient {
-                mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-                -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-            }
-
-            @keyframes scroll-left {
-                from {
-                    transform: translateX(0);
-                }
-
-                to {
-                    transform: translateX(-50%);
-                }
-            }
-
-            @keyframes scroll-right {
-                from {
-                    transform: translateX(-50%);
-                }
-
-                to {
-                    transform: translateX(0);
-                }
-            }
-
-            .animate-scroll-left {
-                animation: scroll-left 40s linear infinite;
-            }
-
-            .animate-scroll-right {
-                animation: scroll-right 45s linear infinite;
-            }
-        </style>
-    </section>
-    <section class="py-24 bg-slate-50 relative overflow-hidden">
-        <!-- 背景装饰：极淡的圆环纹理 -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none">
-            <div class="absolute top-10 left-[-5%] w-64 h-64 rounded-full border-[20px] border-brand-100/50 blur-xl">
-            </div>
-            <div
-                class="absolute bottom-10 right-[-5%] w-80 h-80 rounded-full border-[20px] border-accent-100/50 blur-xl">
-            </div>
-        </div>
-
-        <div class="max-w-3xl mx-auto px-4 relative z-10">
-            <!-- Header -->
-            <div class="text-center mb-16">
-                <span
-                    class="text-brand-600 font-bold tracking-widest uppercase text-xs bg-white px-3 py-1 rounded-full shadow-sm mb-3 inline-block">Support</span>
-                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900">Frequently Asked Questions</h2>
-                <p class="text-slate-500 mt-3">Everything you need to know about creating your activities.</p>
-            </div>
-
-            <div class="space-y-4">
-
-                <!-- Item 1 -->
-                <details
-                    class="group bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 open:ring-2 open:ring-brand-100 overflow-hidden">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-                        <h3
-                            class="font-display font-bold text-lg text-slate-800 group-hover:text-brand-600 transition-colors">
-                            Is GenPrintable really free?</h3>
-                        <!-- 旋转图标 -->
-                        <span class="transition-transform duration-300 group-open:rotate-45">
-                            <div
-                                class="w-8 h-8 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center">
-                                <i class="fa-solid fa-plus text-sm"></i>
-                            </div>
-                        </span>
-                    </summary>
-                    <div class="px-6 pb-6 text-slate-500 leading-relaxed animate-fade-in-down">
-                        <p>Yes! Our core generators for dot-to-dots, name tracing, and mazes are 100% free for both
-                            personal home use and classroom use. We believe in making education accessible to everyone.
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">"Used the Connect the Dots
+                            tool with a picture of our family dog. The kids went crazy for it! Such a clever AI tool."
                         </p>
                     </div>
-                </details>
-
-                <!-- Item 2 -->
-                <details
-                    class="group bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 open:ring-2 open:ring-brand-100 overflow-hidden">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-                        <h3
-                            class="font-display font-bold text-lg text-slate-800 group-hover:text-brand-600 transition-colors">
-                            Can I use this for my kindergarten class?</h3>
-                        <span class="transition-transform duration-300 group-open:rotate-45">
+                    <div
+                        class="w-[350px] p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                        <div class="flex items-center gap-3 mb-4">
                             <div
-                                class="w-8 h-8 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center">
-                                <i class="fa-solid fa-plus text-sm"></i>
+                                class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                                E</div>
+                            <div>
+                                <div class="font-bold text-slate-900 dark:text-white text-sm">Emily R.</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Homeschool Mom</div>
                             </div>
-                        </span>
-                    </summary>
-                    <div class="px-6 pb-6 text-slate-500 leading-relaxed animate-fade-in-down">
-                        <p>Absolutely. Many of our users are teachers! Our tools are designed to align with early
-                            childhood learning standards, specifically focusing on fine motor skills, letter
-                            recognition, and number sequencing.</p>
+                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">"Finally, a worksheet
+                            generator that doesn't look outdated. The designs are clean and the AI context sentences are
+                            hilarious."</p>
                     </div>
-                </details>
-
-                <!-- Item 3 (New Placeholder) -->
-                <details
-                    class="group bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 open:ring-2 open:ring-brand-100 overflow-hidden">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-                        <h3
-                            class="font-display font-bold text-lg text-slate-800 group-hover:text-brand-600 transition-colors">
-                            Do I need to create an account?</h3>
-                        <span class="transition-transform duration-300 group-open:rotate-45">
+                </div>
+                <div class="flex gap-6" aria-hidden="true">
+                    <!-- Duplicate for loop (simplified) -->
+                    <div
+                        class="w-[350px] p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                        <div class="flex items-center gap-3 mb-4">
                             <div
-                                class="w-8 h-8 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center">
-                                <i class="fa-solid fa-plus text-sm"></i>
+                                class="w-10 h-10 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
+                                S</div>
+                            <div>
+                                <div class="font-bold text-slate-900 dark:text-white text-sm">Sarah Jenkins</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Kindergarten Teacher</div>
                             </div>
-                        </span>
-                    </summary>
-                    <div class="px-6 pb-6 text-slate-500 leading-relaxed animate-fade-in-down">
-                        <p>No account is required for the free tools. You can generate and download PDFs instantly as a
-                            guest. However, creating an account allows you to save your previous designs.</p>
+                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">"The bulk generation for
+                            name tracing is a lifesaver. I created 25 unique worksheets for my class in literally 2
+                            minutes."</p>
                     </div>
-                </details>
-
-                <!-- Item 4 (New Placeholder) -->
-                <details
-                    class="group bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 open:ring-2 open:ring-brand-100 overflow-hidden">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-                        <h3
-                            class="font-display font-bold text-lg text-slate-800 group-hover:text-brand-600 transition-colors">
-                            What format are the downloads?</h3>
-                        <span class="transition-transform duration-300 group-open:rotate-45">
+                    <div
+                        class="w-[350px] p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                        <div class="flex items-center gap-3 mb-4">
                             <div
-                                class="w-8 h-8 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center">
-                                <i class="fa-solid fa-plus text-sm"></i>
+                                class="w-10 h-10 rounded-full bg-accent-100 dark:bg-accent-900/30 text-accent-600 dark:text-accent-400 flex items-center justify-center font-bold">
+                                M</div>
+                            <div>
+                                <div class="font-bold text-slate-900 dark:text-white text-sm">Mike T.</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Dad of two</div>
                             </div>
-                        </span>
-                    </summary>
-                    <div class="px-6 pb-6 text-slate-500 leading-relaxed animate-fade-in-down">
-                        <p>All activities are generated as high-resolution A4 PDFs, optimized for standard home and
-                            office printers to ensure crisp lines and clear text.</p>
+                            <div class="ml-auto text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">"Used the Connect the Dots
+                            tool with a picture of our family dog. The kids went crazy for it! Such a clever AI tool."
+                        </p>
                     </div>
-                </details>
-
-            </div>
-
-            <!-- Contact Support Hint -->
-            <div class="text-center mt-12">
-                <p class="text-slate-500 text-sm">
-                    Still have questions?
-                    <a href="#"
-                        class="text-brand-600 font-bold hover:text-brand-700 hover:underline decoration-wavy decoration-brand-300">Contact
-                        our support team</a>
-                </p>
+                </div>
             </div>
         </div>
-
-        <!-- CSS for Removing Default Triangle & Animation -->
-        <style>
-            details>summary {
-                list-style: none;
-            }
-
-            details>summary::-webkit-details-marker {
-                display: none;
-            }
-
-            @keyframes fadeInDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            .animate-fade-in-down {
-                animation: fadeInDown 0.3s ease-out forwards;
-            }
-        </style>
     </section>
-    <!-- 6. SEO Content & Footer -->
-    <!-- ========================================= -->
-    <footer class="bg-slate-50 pt-20 pb-10 border-t border-slate-200 relative overflow-hidden">
 
-        <!-- 背景装饰：极淡的底部光晕 -->
-        <div class="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <div class="absolute bottom-[-20%] left-[-10%] w-96 h-96 bg-brand-100/50 rounded-full blur-[100px]"></div>
-            <div class="absolute top-[-20%] right-[-10%] w-96 h-96 bg-accent-100/30 rounded-full blur-[100px]"></div>
+    <!-- 6. FAQ SECTION (Updated) -->
+    <section class="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none">
+            <div
+                class="absolute top-10 left-[-5%] w-64 h-64 rounded-full border-[20px] border-brand-100/50 dark:border-brand-900/20 blur-xl">
+            </div>
+            <div
+                class="absolute bottom-10 right-[-5%] w-80 h-80 rounded-full border-[20px] border-accent-100/50 dark:border-accent-900/20 blur-xl">
+            </div>
         </div>
+        <div class="max-w-3xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span
+                    class="text-brand-600 dark:text-brand-400 font-bold tracking-widest uppercase text-xs bg-white dark:bg-slate-800 px-3 py-1 rounded-full shadow-sm mb-3 inline-block">Support</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white">Frequently Asked
+                    Questions</h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-3">Everything you need to know about creating your
+                    activities.</p>
+            </div>
+            <div class="space-y-4">
+                <details
+                    class="group bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-all duration-300 open:ring-2 open:ring-brand-100 dark:open:ring-brand-900 overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                        <h3
+                            class="font-display font-bold text-lg text-slate-800 dark:text-slate-200 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                            Is GenPrintable really free?</h3><span
+                            class="transition-transform duration-300 group-open:rotate-45">
+                            <div
+                                class="w-8 h-8 rounded-full bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                                <i class="fa-solid fa-plus text-sm"></i>
+                            </div>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-500 dark:text-slate-400 leading-relaxed animate-fade-in-down">
+                        <p>Yes! Our core generators for dot-to-dots, name tracing, and mazes are 100% free for both
+                            personal home use and classroom use.</p>
+                    </div>
+                </details>
+                <details
+                    class="group bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-all duration-300 open:ring-2 open:ring-brand-100 dark:open:ring-brand-900 overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                        <h3
+                            class="font-display font-bold text-lg text-slate-800 dark:text-slate-200 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                            Can I use this for my kindergarten class?</h3><span
+                            class="transition-transform duration-300 group-open:rotate-45">
+                            <div
+                                class="w-8 h-8 rounded-full bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                                <i class="fa-solid fa-plus text-sm"></i>
+                            </div>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-500 dark:text-slate-400 leading-relaxed animate-fade-in-down">
+                        <p>Absolutely. Many of our users are teachers! Our tools are designed to align with early
+                            childhood learning standards.</p>
+                    </div>
+                </details>
+                <details
+                    class="group bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-all duration-300 open:ring-2 open:ring-brand-100 dark:open:ring-brand-900 overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                        <h3
+                            class="font-display font-bold text-lg text-slate-800 dark:text-slate-200 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                            Do I need to create an account?</h3><span
+                            class="transition-transform duration-300 group-open:rotate-45">
+                            <div
+                                class="w-8 h-8 rounded-full bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                                <i class="fa-solid fa-plus text-sm"></i>
+                            </div>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-500 dark:text-slate-400 leading-relaxed animate-fade-in-down">
+                        <p>No account is required for the free tools. You can generate and download PDFs instantly as a
+                            guest.</p>
+                    </div>
+                </details>
+            </div>
+            <div class="text-center mt-12">
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Still have questions? <a href="#"
+                        class="text-brand-600 dark:text-brand-400 font-bold hover:text-brand-700 hover:underline decoration-wavy decoration-brand-300">Contact
+                        our support team</a></p>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer (Updated) -->
+    <footer
+        class="bg-slate-50 dark:bg-slate-900 pt-20 pb-10 border-t border-slate-200 dark:border-slate-800 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div
+                class="absolute bottom-[-20%] left-[-10%] w-96 h-96 bg-brand-100/50 dark:bg-brand-900/20 rounded-full blur-[100px]">
+            </div>
+            <div
+                class="absolute top-[-20%] right-[-10%] w-96 h-96 bg-accent-100/30 dark:bg-accent-900/20 rounded-full blur-[100px]">
+            </div>
+        </div>
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-
-            <!-- Top Section: Brand & Links Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
-
-                <!-- Col 1: Brand Info (Occupies 4 columns) -->
                 <div class="lg:col-span-4 space-y-6">
                     <a href="#" class="flex items-center gap-2.5 group w-fit">
                         <div
                             class="w-10 h-10 bg-gradient-to-br from-brand-400 to-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
                             <i class="fa-solid fa-leaf text-sm"></i>
-                        </div>
-                        <span class="text-xl font-display font-bold tracking-tight text-slate-900">GenPrintable</span>
+                        </div><span
+                            class="text-xl font-display font-bold tracking-tight text-slate-900 dark:text-white">GenPrintable</span>
                     </a>
-                    <p class="text-slate-500 leading-relaxed text-sm max-w-sm">
-                        Empowering parents and teachers with AI-driven tools to create personalized, engaging, and
-                        educational printable activities in seconds.
-                    </p>
-                    <!-- Social Icons -->
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm max-w-sm">Empowering parents
+                        and teachers with AI-driven tools to create personalized, engaging, and educational printable
+                        activities in seconds.</p>
                     <div class="flex gap-4">
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-brand-600 hover:border-brand-200 hover:shadow-sm transition-all">
-                            <i class="fa-brands fa-twitter"></i>
-                        </a>
+                            class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 hover:border-brand-200 transition-all"><i
+                                class="fa-brands fa-twitter"></i></a>
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-brand-600 hover:border-brand-200 hover:shadow-sm transition-all">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
+                            class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 hover:border-brand-200 transition-all"><i
+                                class="fa-brands fa-instagram"></i></a>
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-brand-600 hover:border-brand-200 hover:shadow-sm transition-all">
-                            <i class="fa-brands fa-pinterest"></i>
-                        </a>
+                            class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 hover:border-brand-200 transition-all"><i
+                                class="fa-brands fa-pinterest"></i></a>
                     </div>
                 </div>
-
-                <!-- Col 2: Product Links (2 cols) -->
                 <div class="lg:col-span-2 lg:col-start-6">
-                    <h4 class="font-bold text-slate-900 mb-6">Generators</h4>
-                    <ul class="space-y-4 text-sm text-slate-500">
-                        <li><a href="#" class="hover:text-brand-600 transition-colors">Connect the Dots</a></li>
-                        <li><a href="#" class="hover:text-brand-600 transition-colors">Name Tracing</a></li>
-                        <li><a href="#" class="hover:text-brand-600 transition-colors">Paper Crafts</a></li>
-                        <li><a href="#" class="hover:text-brand-600 transition-colors">Word Search</a></li>
-                        <li><a href="#" class="hover:text-brand-600 transition-colors">Maze Maker</a></li>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Generators</h4>
+                    <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="/connect-the-dots.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Connect
+                                the Dots</a></li>
+                        <li><a href="/name-tracing.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Name
+                                Tracing</a></li>
+                        <li><a href="/" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Paper
+                                Crafts</a></li>
+                        <li><a href="#" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Word
+                                Search</a></li>
+                        <li><a href="#" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Maze
+                                Maker</a></li>
                     </ul>
                 </div>
-
-                <!-- Col 3: Company Links (2 cols) -->
                 <div class="lg:col-span-2">
-                    <h4 class="font-bold text-slate-900 mb-6">Resources</h4>
-                    <ul class="space-y-4 text-sm text-slate-500">
-                        <li><a href="#" class="hover:text-brand-600 transition-colors">For Teachers</a></li>
-                        <li><a href="#" class="hover:text-brand-600 transition-colors">Blog</a></li>
-                        <li><a href="#" class="hover:text-brand-600 transition-colors">Help Center</a></li>
-                        <li><a href="#" class="hover:text-brand-600 transition-colors">Pricing</a></li>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Resources</h4>
+                    <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="#" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">For
+                                Teachers</a></li>
+                        <li><a href="#"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Help
+                                Center</a></li>
+                        <li><a href="#"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Pricing</a>
+                        </li>
                     </ul>
                 </div>
-
-                <!-- Col 4: Newsletter (4 cols) -->
                 <div class="lg:col-span-3">
-                    <h4 class="font-bold text-slate-900 mb-6">Stay Updated</h4>
-                    <p class="text-sm text-slate-500 mb-4">Get new activity ideas delivered to your inbox.</p>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Stay Updated</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Get new activity ideas delivered to your
+                        inbox.</p>
                     <form class="flex gap-2">
                         <input type="email" placeholder="Enter your email"
-                            class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition-all">
+                            class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition-all dark:text-white">
                         <button type="button"
-                            class="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-brand-600 transition-colors">
-                            Subscribe
-                        </button>
+                            class="bg-slate-900 dark:bg-brand-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-brand-600 transition-colors">Subscribe</button>
                     </form>
                 </div>
             </div>
-
-            <!-- Middle Section: SEO Content (Faded & Secondary) -->
-            <div class="border-t border-slate-200 pt-10 pb-10">
-                <h5 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">About GenPrintable</h5>
-                <p class="text-xs leading-relaxed text-slate-400 text-justify">
-                    Welcome to GenPrintable.com, the ultimate AI-driven platform for generating educational printables.
-                    We specialize in dynamic worksheet generators that cater to preschool, kindergarten, and elementary
-                    school needs. Our technology ensures that every parent and teacher can access high-quality math dot
-                    to dot puzzles, custom name tracing worksheets, and themed cut and paste crafts instantly. Whether
-                    you are homeschooling or managing a classroom, our tools simplify the creation of educational
-                    resources, focusing on fine motor skills, letter recognition, and cognitive development through
-                    play. All generated content is free for personal and educational use.
-                </p>
-            </div>
-
-            <!-- Bottom Section: Copyright & Legal -->
             <div
-                class="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-                <div class="text-slate-400">
-                    &copy; 2023 GenPrintable Suite. Made with <i class="fa-solid fa-heart text-accent-400 mx-1"></i> for
-                    kids.
-                </div>
+                class="border-t border-slate-200 dark:border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+                <div class="text-slate-400">&copy; 2023 GenPrintable Suite. Made with <i
+                        class="fa-solid fa-heart text-accent-400 mx-1"></i> for kids.</div>
                 <div class="flex gap-6">
                     <a href="#" class="text-slate-500 hover:text-brand-600 font-medium transition-colors">Privacy
                         Policy</a>
@@ -1322,39 +1139,70 @@
         </div>
     </footer>
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "GenPrintable",
-  "applicationCategory": "EducationalApplication",
-  "operatingSystem": "Web",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "2400"
-  },
-  "description": "AI-powered tool to generate custom educational worksheets like connect the dots and name tracing."
-}
-</script>
-
-    <!-- 简单的 JS -->
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GenPrintable",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "2400"
+      },
+      "description": "AI-powered tool to generate custom educational worksheets like connect the dots and name tracing."
+    }
+    </script>
     <script>
-        const menu = document.getElementById('mobile-menu');
-        const openBtn = document.getElementById('mobile-menu-btn');
-        const closeBtn = document.getElementById('close-menu-btn');
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Dark Mode Init
+            const html = document.documentElement;
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
 
-        function toggleMenu() {
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
-        }
+            // 2. Dark Mode Toggle
+            const desktopThemeBtn = document.getElementById('theme-toggle-desktop');
+            const mobileThemeBtn = document.getElementById('theme-toggle-mobile');
 
-        openBtn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
+            function toggleDarkMode() {
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    html.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+            }
+            if (desktopThemeBtn) desktopThemeBtn.addEventListener('click', toggleDarkMode);
+            if (mobileThemeBtn) mobileThemeBtn.addEventListener('click', toggleDarkMode);
+
+            // 3. Mobile Menu Toggle
+            const menu = document.getElementById('mobile-menu');
+            const openBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-menu-btn');
+
+            function toggleMenu() {
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    menu.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    document.body.style.overflow = '';
+                }
+            }
+            if (openBtn) openBtn.addEventListener('click', toggleMenu);
+            if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
+        });
     </script>
 </body>
 
