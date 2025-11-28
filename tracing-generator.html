@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ZenTrace Studio - GenPrintable</title>
+
+    <!-- Core Tech Stack -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- 
+        FONTS: 
+        1. Outfit/Plus Jakarta Sans: UI Interface
+        2. Andika: Block Print (Zaner-Bloser style)
+        3. Edu SA Beginner: Modern Print (D'Nealian style)
+        4. Edu VIC WA NT Beginner: Cursive (Standard School Cursive)
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Edu+SA+Beginner:wght@400;500;600;700&family=Edu+VIC+WA+NT+Beginner:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Outfit', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: { 50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857', 900: '#064e3b' },
+                        paper: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 800: '#292524', 900: '#1c1917' }
+                    },
+                    boxShadow: {
+                        'paper': '0 20px 60px -12px rgba(0, 0, 0, 0.25)',
+                        'drawer': '0 -10px 40px -10px rgba(0,0,0,0.1)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #475569;
+        }
+
+        /* Background Pattern */
+        .hero-bg {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+
+        .dark .hero-bg {
+            background-color: #020617;
+            background-image: radial-gradient(#1e293b 1.5px, transparent 1.5px);
+        }
+
+        /* Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #059669;
+            cursor: pointer;
+            margin-top: -7px;
+            box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
+            transition: transform 0.1s;
+        }
+
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #e2e8f0;
+            border-radius: 2px;
+        }
+
+        .dark input[type=range]::-webkit-slider-runnable-track {
+            background: #334155;
+        }
+
+        /* Canvas Styles */
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-paper-50 text-paper-800 font-sans h-[100dvh] flex flex-col overflow-hidden dark:bg-slate-950 dark:text-slate-100 selection:bg-brand-100 selection:text-brand-900">
+
+    <!-- 1. HEADER -->
+    <header
+        class="h-16 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-paper-200 dark:border-slate-800 flex items-center justify-between px-4 lg:px-8 flex-shrink-0 z-30">
+        <div class="flex items-center gap-4">
+            <a href="#" class="flex items-center gap-2 group">
+                <div
+                    class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:rotate-12 transition-transform duration-300">
+                    <i class="fa-solid fa-pencil text-sm"></i>
+                </div>
+                <span
+                    class="text-lg font-display font-bold tracking-tight text-paper-900 dark:text-white hidden sm:block">ZenTrace</span>
+            </a>
+            <div class="h-6 w-px bg-slate-200 dark:bg-slate-700 hidden sm:block"></div>
+            <h1 class="text-sm font-semibold text-slate-500 dark:text-slate-400">Worksheet Studio</h1>
+        </div>
+
+        <div class="flex items-center gap-2 lg:gap-3">
+            <button id="theme-toggle"
+                class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-yellow-400 flex items-center justify-center hover:bg-slate-200 transition-colors">
+                <i class="fa-solid fa-moon dark:hidden"></i>
+                <i class="fa-solid fa-sun hidden dark:block"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 2. MAIN LAYOUT -->
+    <div class="flex-1 flex overflow-hidden relative">
+
+        <!-- Mobile Backdrop -->
+        <div id="backdrop" onclick="toggleDrawer()"
+            class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity"></div>
+
+        <!-- ============================== -->
+        <!-- LEFT SIDEBAR (SETTINGS)        -->
+        <!-- ============================== -->
+        <aside id="sidebar-drawer"
+            class="fixed inset-x-0 bottom-0 z-50 w-full h-[85vh] bg-white dark:bg-slate-900 rounded-t-[2rem] shadow-drawer flex flex-col transition-transform duration-300 transform translate-y-full lg:translate-y-0 lg:relative lg:inset-auto lg:h-auto lg:w-[380px] xl:w-[420px] lg:border-r lg:border-slate-200 lg:dark:border-slate-800 lg:shadow-none lg:rounded-none">
+
+            <!-- Mobile Toggle Handle -->
+            <div
+                class="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center lg:hidden">
+                <h2 class="text-lg font-display font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-brand-600"></i> Settings
+                </h2>
+                <button onclick="toggleDrawer()"
+                    class="w-8 h-8 flex items-center justify-center bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 hover:bg-slate-200 transition-colors">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+
+            <!-- Scrollable Content -->
+            <div class="flex-1 overflow-y-auto p-6 space-y-8 pb-32 lg:pb-8 custom-scrollbar">
+
+                <!-- SECTION: CONTENT -->
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">Content</h3>
+                        <span
+                            class="text-[10px] bg-brand-100 text-brand-700 px-2 py-0.5 rounded-full font-bold dark:bg-brand-900 dark:text-brand-300">Editable</span>
+                    </div>
+
+                    <textarea id="inputText" rows="6"
+                        class="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl p-4 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 transition-all resize-none font-sans"
+                        placeholder="Type names or sentences here..."></textarea>
+
+                    <!-- Quick Chips -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="quickFill('name')"
+                            class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 hover:text-brand-600 rounded-lg text-xs font-bold text-slate-500 transition-colors border border-transparent hover:border-brand-200">
+                            ✨ Name Rhyme
+                        </button>
+                        <button onclick="quickFill('words')"
+                            class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 hover:text-brand-600 rounded-lg text-xs font-bold text-slate-500 transition-colors border border-transparent hover:border-brand-200">
+                            📚 Sight Words
+                        </button>
+                        <button onclick="quickFill('blank')"
+                            class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 hover:text-brand-600 rounded-lg text-xs font-bold text-slate-500 transition-colors border border-transparent hover:border-brand-200">
+                            ⬜ Blank Lines
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SECTION: STYLE (UPDATED FONTS) -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">Handwriting Style</h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl">
+                        <!-- 1. Block (Zaner-Bloser) -->
+                        <button onclick="setOption('fontStyle', 'print', this)"
+                            class="font-btn active py-2.5 rounded-lg text-xs font-bold transition-all shadow-sm bg-white text-brand-600 dark:bg-slate-700 dark:text-white">
+                            Block
+                            <span class="block text-[9px] font-normal opacity-70">Zaner-Bloser</span>
+                        </button>
+
+                        <!-- 2. Modern (D'Nealian) -->
+                        <button onclick="setOption('fontStyle', 'modern', this)"
+                            class="font-btn py-2.5 rounded-lg text-xs font-bold text-slate-500 hover:text-slate-700 dark:text-slate-400 transition-all">
+                            Modern
+                            <span class="block text-[9px] font-normal opacity-70">D'Nealian</span>
+                        </button>
+
+                        <!-- 3. Cursive -->
+                        <button onclick="setOption('fontStyle', 'cursive', this)"
+                            class="font-btn py-2.5 rounded-lg text-xs font-bold text-slate-500 hover:text-slate-700 dark:text-slate-400 transition-all">
+                            Cursive
+                            <span class="block text-[9px] font-normal opacity-70">Standard</span>
+                        </button>
+                    </div>
+
+                    <!-- Size Slider -->
+                    <div>
+                        <div class="flex justify-between text-sm text-slate-600 dark:text-slate-400 mb-2 font-medium">
+                            <label>Font Size</label>
+                            <span class="font-bold text-slate-900 dark:text-white"><span
+                                    id="sizeLabel">50</span>px</span>
+                        </div>
+                        <input type="range" min="30" max="100" value="50" id="fontSizeRange" class="w-full">
+                    </div>
+                </div>
+
+                <!-- SECTION: GUIDES -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">Grid System</h3>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="setOption('guideType', 'none', this)"
+                            class="guide-btn py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-500 hover:border-brand-500 hover:text-brand-600 transition-all">
+                            Blank
+                        </button>
+                        <button onclick="setOption('guideType', 'three', this)"
+                            class="guide-btn active py-2 border border-brand-500 bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300 rounded-xl text-xs font-bold transition-all">
+                            3-Line
+                        </button>
+                        <button onclick="setOption('guideType', 'four', this)"
+                            class="guide-btn py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-500 hover:border-brand-500 hover:text-brand-600 transition-all">
+                            4-Line
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SECTION: ACTION -->
+                <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+                    <button id="downloadBtn"
+                        class="w-full py-4 bg-gradient-to-r from-brand-600 to-brand-500 text-white rounded-xl text-base font-bold hover:shadow-lg hover:shadow-brand-500/25 transition-all flex items-center justify-center gap-2 active:scale-[0.98]">
+                        <i class="fa-solid fa-file-pdf"></i> Download Worksheet
+                    </button>
+                    <p class="text-center text-xs text-slate-400 mt-3">Format: A4 PDF • High Quality Print</p>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- ============================== -->
+        <!-- RIGHT MAIN: PREVIEW            -->
+        <!-- ============================== -->
+        <main class="flex-1 flex flex-col relative w-full h-full hero-bg overflow-hidden">
+            <div class="flex-1 w-full h-full flex items-center justify-center p-4 lg:p-12">
+
+                <!-- A4 Aspect Ratio Container -->
+                <div id="canvas-container"
+                    class="relative bg-white shadow-paper h-auto w-auto max-h-full max-w-full aspect-[210/297] flex items-center justify-center">
+                    <canvas id="tracingCanvas" width="794" height="1123" class="w-full h-full object-contain"></canvas>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Mobile FAB -->
+        <button onclick="toggleDrawer()"
+            class="lg:hidden fixed bottom-6 right-6 w-14 h-14 bg-slate-900 dark:bg-brand-600 text-white rounded-full shadow-xl shadow-slate-900/30 flex items-center justify-center z-50 hover:scale-105 active:scale-95 transition-all">
+            <i class="fa-solid fa-sliders text-xl"></i>
+        </button>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+    <script>
+        // --- UI LOGIC ---
+        const themeBtn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeBtn.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+
+        function toggleDrawer() {
+            const drawer = document.getElementById('sidebar-drawer');
+            const backdrop = document.getElementById('backdrop');
+            if (drawer.classList.contains('translate-y-full')) {
+                drawer.classList.remove('translate-y-full');
+                backdrop.classList.remove('hidden');
+            } else {
+                drawer.classList.add('translate-y-full');
+                backdrop.classList.add('hidden');
+            }
+        }
+
+        // --- ZENTRACE LOGIC (UPDATED FONTS) ---
+        const state = {
+            text: "Alice\nAlice\nAlice",
+            fontStyle: "print", // 'print' | 'modern' | 'cursive'
+            guideType: "three",
+            fontSize: 50
+        };
+
+        const canvas = document.getElementById('tracingCanvas');
+        const ctx = canvas.getContext('2d');
+        const inputTextArea = document.getElementById('inputText');
+        const fontSizeRange = document.getElementById('fontSizeRange');
+        const sizeLabel = document.getElementById('sizeLabel');
+
+        inputTextArea.value = state.text;
+
+        inputTextArea.addEventListener('input', (e) => {
+            state.text = e.target.value;
+            draw();
+        });
+
+        fontSizeRange.addEventListener('input', (e) => {
+            state.fontSize = parseInt(e.target.value);
+            sizeLabel.innerText = state.fontSize;
+            draw();
+        });
+
+        // Toggle Buttons Logic
+        window.setOption = function (key, value, btnElement) {
+            state[key] = value;
+
+            if (key === 'fontStyle') {
+                // Reset all font buttons
+                const fontBtns = document.querySelectorAll('.font-btn');
+                const activeClasses = ['bg-white', 'text-brand-600', 'shadow-sm', 'dark:bg-slate-700', 'dark:text-white', 'active'];
+                const inactiveClasses = ['text-slate-500', 'hover:text-slate-700', 'dark:text-slate-400'];
+
+                fontBtns.forEach(btn => {
+                    btn.classList.remove(...activeClasses);
+                    btn.classList.add(...inactiveClasses);
+                });
+
+                // Set active
+                btnElement.classList.remove(...inactiveClasses);
+                btnElement.classList.add(...activeClasses);
+
+            } else if (key === 'guideType') {
+                const buttons = document.querySelectorAll('.guide-btn');
+                buttons.forEach(b => {
+                    b.className = 'guide-btn py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-500 hover:border-brand-500 hover:text-brand-600 transition-all';
+                });
+                btnElement.className = 'guide-btn active py-2 border border-brand-500 bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300 rounded-xl text-xs font-bold transition-all';
+            }
+            draw();
+        }
+
+        window.quickFill = function (type) {
+            if (type === 'name') state.text = "Alice\nAlice\nAlice";
+            if (type === 'words') state.text = "apple banana cat dog\nelephant fish giraffe";
+            if (type === 'blank') state.text = " \n \n \n \n ";
+            inputTextArea.value = state.text;
+            draw();
+        }
+
+        // --- CORE DRAWING ENGINE (UPDATED FONTS) ---
+        function draw() {
+            ctx.clearRect(0, 0, 794, 1123);
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, 794, 1123);
+
+            if (!state.text && state.text !== "") return;
+
+            const margin = 50;
+            const maxWidth = 794 - (margin * 2);
+            const spacingMultiplier = state.guideType === 'four' ? 3.5 : 3.0;
+            const stepSize = state.fontSize * spacingMultiplier;
+
+            // --- FONT SELECTION LOGIC ---
+            // 1. Block Print = Andika (Zaner-Bloser style)
+            // 2. Modern Print = Edu SA Beginner (D'Nealian style)
+            // 3. Cursive = Edu VIC WA NT Beginner (Standard Cursive)
+            let fontFamily = '"Andika", sans-serif';
+
+            if (state.fontStyle === 'modern') {
+                fontFamily = '"Edu SA Beginner", cursive';
+            } else if (state.fontStyle === 'cursive') {
+                fontFamily = '"Edu VIC WA NT Beginner", cursive';
+            }
+
+            ctx.font = `${state.fontSize}px ${fontFamily}`;
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'alphabetic';
+
+            let cursorY = margin + state.fontSize;
+            const paragraphs = state.text.split('\n');
+
+            paragraphs.forEach(paragraph => {
+                if (paragraph.length === 0) {
+                    drawSingleLine(cursorY, margin, maxWidth, "");
+                    cursorY += stepSize;
+                    return;
+                }
+
+                const words = paragraph.split(' ');
+                let currentLine = '';
+
+                for (let i = 0; i < words.length; i++) {
+                    const word = words[i];
+                    const testLine = currentLine + word + ' ';
+                    const metrics = ctx.measureText(testLine);
+
+                    if (metrics.width > maxWidth && i > 0) {
+                        drawSingleLine(cursorY, margin, maxWidth, currentLine);
+                        cursorY += stepSize;
+                        currentLine = word + ' ';
+                    } else {
+                        currentLine = testLine;
+                    }
+                }
+                drawSingleLine(cursorY, margin, maxWidth, currentLine);
+                cursorY += stepSize;
+
+                if (cursorY > 1100) return;
+            });
+        }
+
+        function drawSingleLine(baselineY, margin, width, text) {
+            drawGuideSet(baselineY, state.fontSize, margin, width);
+            if (text && text.trim() !== "") {
+                ctx.fillStyle = '#b2bec3';
+                // Adjust dot density based on font complexity
+                const dashArray = state.fontStyle === 'cursive' ? [1, 2] : [4, 4];
+                ctx.setLineDash(dashArray);
+
+                ctx.fillText(text, margin, baselineY);
+                ctx.setLineDash([]);
+            }
+        }
+
+        function drawGuideSet(baselineY, size, margin, width) {
+            if (state.guideType === 'none') return;
+
+            const endX = margin + width;
+            const midlineY = baselineY - (size * 0.5);
+            const toplineY = baselineY - (size * 1.0);
+
+            ctx.lineWidth = 1;
+
+            // 1. Top (Grey Solid)
+            ctx.strokeStyle = '#cbd5e1';
+            ctx.beginPath(); ctx.moveTo(margin, toplineY); ctx.lineTo(endX, toplineY); ctx.stroke();
+
+            // 2. Mid (Blue Dashed)
+            ctx.strokeStyle = '#3b82f6';
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath(); ctx.moveTo(margin, midlineY); ctx.lineTo(endX, midlineY); ctx.stroke();
+            ctx.setLineDash([]);
+
+            // 3. Base (Dark Solid)
+            ctx.strokeStyle = '#334155';
+            ctx.beginPath(); ctx.moveTo(margin, baselineY); ctx.lineTo(endX, baselineY); ctx.stroke();
+
+            // 4. Descender (Red Solid)
+            if (state.guideType === 'four') {
+                const descenderY = baselineY + (size * 0.4);
+                ctx.strokeStyle = '#f43f5e';
+                ctx.beginPath(); ctx.moveTo(margin, descenderY); ctx.lineTo(endX, descenderY); ctx.stroke();
+            }
+        }
+
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            const btn = document.getElementById('downloadBtn');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generating...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                const { jsPDF } = window.jspdf;
+                const imgData = canvas.toDataURL('image/png', 1.0);
+                const doc = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'a4' });
+                doc.addImage(imgData, 'PNG', 0, 0, 595, 842);
+                doc.save('ZenTrace_Worksheet.pdf');
+
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+            }, 500);
+        });
+
+        // Wait for fonts to load before first draw to avoid "glitch"
+        document.fonts.ready.then(function () {
+            draw();
+        });
+
+    </script>
+</body>
+
+</html>
