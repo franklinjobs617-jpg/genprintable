@@ -151,17 +151,16 @@
         <!-- Main Controller -->
         <div ng-controller="MainCtrl" class="flex-1 flex flex-col h-full overflow-hidden">
 
-            <!-- 1. Header -->
             <header
                 class="h-16 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-paper-200 dark:border-slate-800 flex items-center justify-between px-4 lg:px-8 flex-shrink-0 z-30">
                 <div class="flex items-center gap-4">
                     <a href="/" class="flex items-center gap-2 group">
                         <div
-                            class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:rotate-12 transition-transform duration-300">
-                            <i class="fa-solid fa-palette text-xs"></i>
+                            class="w-8 h-8 lg:w-9 lg:h-9 bg-brand-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:rotate-12 transition-transform duration-300">
+                            <i class="fa-solid fa-shapes text-xs lg:text-sm"></i>
                         </div>
                         <span
-                            class="text-lg font-display font-bold tracking-tight text-paper-900 dark:text-white hidden sm:block">PBNify</span>
+                            class="text-lg lg:text-xl font-display font-bold tracking-tight text-paper-900 dark:text-white">GenPrintable</span>
                     </a>
                     <div class="h-6 w-px bg-slate-200 dark:bg-slate-700 hidden sm:block"></div>
                     <h1 class="text-sm font-semibold text-slate-500 dark:text-slate-400">Paint By Number Studio</h1>
@@ -459,25 +458,7 @@
 
     <!-- Logic Script for UI (Dark Mode & Drawer) -->
     <script>
-        // Dark Mode Logic
-        const themeBtn = document.getElementById('theme-toggle');
-        const html = document.documentElement;
 
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
-        } else {
-            html.classList.remove('dark');
-        }
-
-        themeBtn.addEventListener('click', () => {
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                html.classList.add('dark');
-                localStorage.theme = 'dark';
-            }
-        });
 
         // Drawer Logic
         function toggleDrawer() {
@@ -510,12 +491,12 @@
     </script>
 
     <!-- PBNify Scripts -->
-    <script src="script/angular.min.js"></script>
-    <script src="script/lodash.js"></script>
-    <script src="script/app.js"></script>
-    <script src="script/controllers/main.js"></script>
-    <script src="script/directives/stage.js"></script>
-    <script src="script/directives/loadfile.js"></script>
+    <script src="/script/angular.min.js"></script>
+    <script src="/script/lodash.js"></script>
+    <script src="/script/app.js"></script>
+    <script src="/script/controllers/main.js"></script>
+    <script src="/script/directives/stage.js"></script>
+    <script src="/script/directives/loadfile.js"></script>
 </body>
 
 </html>
