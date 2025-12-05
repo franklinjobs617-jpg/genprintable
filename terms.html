@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - GenPrintable.com</title>
+    <meta name="description"
+        content="Terms of Service for GenPrintable.com. Information regarding usage rights, intellectual property, refund policies, and disclaimers.">
+
+    <!-- 核心技术栈 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Outfit', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b'
+                        },
+                        paper: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 800: '#292524', 900: '#1c1917' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-paper-50 text-paper-800 font-sans antialiased selection:bg-brand-100 selection:text-brand-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100 flex flex-col min-h-screen">
+
+    <!-- 1. NAVIGATION -->
+    <header
+        class="w-full bg-white/90 backdrop-blur-md border-b border-paper-100 z-50 h-16 lg:h-20 flex items-center dark:bg-slate-900/90 dark:border-slate-800 sticky top-0 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div
+                    class="w-8 h-8 lg:w-9 lg:h-9 bg-brand-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:rotate-12 transition-transform duration-300">
+                    <i class="fa-solid fa-shapes text-xs lg:text-sm"></i>
+                </div>
+                <span
+                    class="text-lg lg:text-xl font-display font-bold tracking-tight text-paper-900 dark:text-white">GenPrintable</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="index.html"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Home</a>
+                <a href="index.html#generators"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Tools</a>
+                <a href="about.html"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">About</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle-desktop" aria-label="Toggle Dark Mode"
+                    class="hidden md:flex w-10 h-10 rounded-full bg-paper-100 text-paper-800 hover:bg-paper-200 dark:bg-slate-800 dark:text-yellow-400 dark:hover:bg-slate-700 transition-all items-center justify-center">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 dark:text-slate-200 text-2xl p-2"><i
+                    class="fa-solid fa-bars"></i></button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-[60] bg-white/98 dark:bg-slate-950/98 backdrop-blur-xl hidden flex-col h-[100dvh] transition-all duration-300">
+            <div
+                class="flex items-center justify-between px-6 h-16 border-b border-slate-100 dark:border-slate-800 flex-shrink-0 bg-white/50 dark:bg-slate-900/50">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white"><i
+                            class="fa-solid fa-shapes text-xs lg:text-sm"></i></div>
+                    <span class="text-lg font-display font-bold text-slate-900 dark:text-white">GenPrintable</span>
+                </div>
+                <button id="close-menu-btn"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto px-6 py-6 scrollbar-hide bg-white dark:bg-slate-900">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="text-lg font-bold text-slate-800 dark:text-slate-200">Home</a>
+                    <a href="about.html" class="text-lg font-bold text-slate-800 dark:text-slate-200">About</a>
+                </div>
+            </div>
+            <div
+                class="p-6 border-t border-slate-100 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 flex-shrink-0">
+                <button id="theme-toggle-mobile" aria-label="Toggle Dark Mode"
+                    class="w-full flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-yellow-400 font-bold active:scale-95 transition-transform">
+                    <i class="fa-solid fa-moon dark:hidden text-slate-500"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                    <span class="dark:text-white text-slate-600">Switch Appearance</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. MAIN CONTENT -->
+    <main class="flex-grow container max-w-4xl mx-auto px-6 py-12 lg:py-20">
+
+        <!-- Header -->
+        <div class="mb-12 border-b border-slate-200 dark:border-slate-800 pb-8">
+            <h1 class="text-3xl md:text-5xl font-display font-extrabold text-slate-900 dark:text-white mb-4">Terms of
+                Service</h1>
+            <p
+                class="text-slate-500 dark:text-slate-400 font-medium bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-lg inline-block text-sm">
+                <i class="fa-regular fa-clock mr-2"></i>Effective Date: December 3, 2025
+            </p>
+        </div>
+
+        <div class="space-y-12 text-slate-600 dark:text-slate-300 leading-relaxed">
+
+            <!-- 1. Acceptance -->
+            <section id="acceptance" class="scroll-mt-24">
+                <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4">1. Acceptance of Terms
+                </h2>
+                <p>By accessing and using the tools and resources provided by GenPrintable.com, you agree to be bound by
+                    these Terms of Service. If you disagree with any part of the terms, then you may not access the
+                    service.</p>
+            </section>
+
+            <!-- 2. IP Rights -->
+            <section id="usage-rights" class="scroll-mt-24">
+                <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4">2. Intellectual Property
+                    and Usage Rights</h2>
+                <p class="mb-6">The underlying code, design, and AI tools of GenPrintable.com are owned by us. We grant
+                    you a personal, non-commercial license to download, print, and use the resources you generate
+                    through our tools (including the AI Generator). These resources are intended for personal,
+                    classroom, or educational environments.</p>
+
+                <!-- Highlight Box -->
+                <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 rounded-r-xl">
+                    <h3 class="font-bold text-blue-800 dark:text-blue-300 mb-2">User Responsibility for IP</h3>
+                    <p class="text-sm text-blue-900/80 dark:text-blue-200/80">The user is solely responsible for any
+                        content or inputs used to generate resources. You must have the necessary rights and permissions
+                        for any image, text, or design you input. GenPrintable.com holds no responsibility for any
+                        intellectual property infringement caused by user inputs.</p>
+                </div>
+            </section>
+
+            <!-- 3. Usage Restrictions -->
+            <section id="usage-restrictions" class="scroll-mt-24">
+                <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4">3. Usage Restrictions
+                    and Prohibited Behavior</h2>
+                <p class="mb-4">You agree not to:</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-circle-xmark text-red-500 mt-1"></i>
+                        <span>Use the generated resources for large-scale commercial distribution or resale without
+                            explicit permission.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-circle-xmark text-red-500 mt-1"></i>
+                        <span>Engage in automated or mass scraping of our website content or generated resources.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-circle-xmark text-red-500 mt-1"></i>
+                        <span>Upload, generate, or transmit any illegal, harmful, defamatory, or content that infringes
+                            on the IP rights of others.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-circle-xmark text-red-500 mt-1"></i>
+                        <span>Attempt to interfere with or disrupt the proper functioning of our website or
+                            servers.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 4. Paid Services & Refunds -->
+            <section id="paid-services" class="scroll-mt-24">
+                <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4">4. Paid Services and
+                    Refund Policy</h2>
+                <p class="mb-6">GenPrintable.com offers optional AI enhanced features (e.g., higher resolution output,
+                    batch generation) which may require a one-time credit purchase or subscription.</p>
+
+                <!-- Refund Policy Warning Box -->
+                <div
+                    class="border border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-950/20 rounded-xl p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div
+                            class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center text-red-600 dark:text-red-400">
+                            <i class="fa-solid fa-ban"></i>
+                        </div>
+                        <h3 class="font-bold text-red-700 dark:text-red-400 text-lg">Strict Refund Policy</h3>
+                    </div>
+                    <div class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                        <p class="mb-2">Due to the digital and instant nature of the service, all sales of credits,
+                            subscriptions, or digital downloads are considered <strong
+                                class="text-red-600 dark:text-red-400 font-bold uppercase">final</strong>.</p>
+                        <p>GenPrintable.com generally <strong>does not offer refunds</strong> once credits have been
+                            used or a subscription service has been activated. In the event of a technical failure
+                            preventing service use, compensation or service repair will be made at our discretion.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Disclaimer -->
+            <section id="disclaimer" class="scroll-mt-24">
+                <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4">5. Disclaimer of
+                    Warranties</h2>
+                <div
+                    class="disclaimer-box bg-slate-100 dark:bg-slate-900 p-6 md:p-8 rounded-2xl text-xs md:text-sm font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide leading-relaxed border border-slate-200 dark:border-slate-800">
+                    <p class="mb-4">GenPrintable.com and all its tools, resources, and AI-generated content are provided
+                        on an <strong class="text-slate-700 dark:text-slate-300">"as is"</strong> and <strong
+                            class="text-slate-700 dark:text-slate-300">"as available"</strong> basis, without any
+                        warranties of any kind, either express or implied. We do not warrant that the service will be
+                        uninterrupted, error-free, or meet your specific requirements.</p>
+                    <p>In no event shall GenPrintable.com be liable for any direct, indirect, incidental, special, or
+                        consequential damages arising out of the use or inability to use our services.</p>
+                </div>
+            </section>
+
+            <!-- 6. Modifications -->
+            <section id="changes" class="scroll-mt-24">
+                <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4">6. Modifications to
+                    Terms</h2>
+                <p>GenPrintable.com reserves the right to revise these Terms of Service at any time. We will post the
+                    updated terms on the website. Your continued use of the service following any changes constitutes
+                    your acceptance of the new terms.</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+        class="bg-slate-50 dark:bg-slate-900 pt-20 pb-10 border-t border-slate-200 dark:border-slate-800 relative overflow-hidden mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 lg:col-span-2">
+                    <a href="index.html" class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white">
+                            <i class="fa-solid fa-shapes text-xs"></i>
+                        </div>
+                        <span class="text-lg font-display font-bold text-slate-900 dark:text-white">GenPrintable</span>
+                    </a>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 max-w-sm">Secure, compliant, and
+                        privacy-focused educational tools for the modern classroom and home.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="privacy.html" class="hover:text-brand-600 transition-colors">Privacy Policy</a>
+                        </li>
+                        <li><a href="terms.html" class="text-brand-600 font-medium">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-brand-600 transition-colors">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="contact.html" class="hover:text-brand-600 transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-brand-600 transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 dark:border-slate-700 pt-8 text-center text-sm text-slate-400">
+                &copy; 2025 GenPrintable Suite. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Dark Mode Logic
+            const html = document.documentElement;
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+
+            const desktopThemeBtn = document.getElementById('theme-toggle-desktop');
+            const mobileThemeBtn = document.getElementById('theme-toggle-mobile');
+
+            function toggleDarkMode() {
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    html.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+            }
+            if (desktopThemeBtn) desktopThemeBtn.addEventListener('click', toggleDarkMode);
+            if (mobileThemeBtn) mobileThemeBtn.addEventListener('click', toggleDarkMode);
+
+            // Mobile Menu
+            const menu = document.getElementById('mobile-menu');
+            const openBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-menu-btn');
+
+            function toggleMenu() {
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    menu.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    document.body.style.overflow = '';
+                }
+            }
+            if (openBtn) openBtn.addEventListener('click', toggleMenu);
+            if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
+        });
+    </script>
+</body>
+
+</html>

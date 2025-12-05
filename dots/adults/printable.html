@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SEO Meta Tags -->
+    <title>
+        Connect the Dots Printable Adults: Artistic & Abstract Collection |
+        GenPrintable
+    </title>
+    <meta name="description"
+        content="Discover our exclusive collection of artistic and abstract connect the dots printables for adults. High complexity, 1000+ dots, perfect for mindfulness and focus." />
+
+    <!-- 核心技术栈 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ["Outfit", "sans-serif"],
+                        sans: ["Plus Jakarta Sans", "sans-serif"],
+                    },
+                    colors: {
+                        // Brand: Teal
+                        brand: {
+                            50: "#ecfdf5",
+                            100: "#d1fae5",
+                            200: "#a7f3d0",
+                            400: "#34d399",
+                            500: "#10b981",
+                            600: "#059669",
+                            700: "#047857",
+                            900: "#064e3b",
+                        },
+                        // Accent: Purple/Lavender for Artistic Feel
+                        accent: {
+                            50: "#f5f3ff",
+                            100: "#ede9fe",
+                            200: "#ddd6fe",
+                            400: "#a78bfa",
+                            500: "#8b5cf6",
+                            600: "#7c3aed",
+                            700: "#6d28d9",
+                            900: "#4c1d95",
+                        },
+                        paper: {
+                            50: "#fafaf9",
+                            100: "#f5f5f4",
+                            200: "#e7e5e4",
+                            800: "#292524",
+                            900: "#1c1917",
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .custom-prose p {
+            margin-bottom: 1.5rem;
+            line-height: 1.75;
+        }
+
+        .custom-prose h2 {
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-prose h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        details>summary {
+            list-style: none;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-paper-50 text-paper-800 font-sans antialiased selection:bg-brand-100 selection:text-brand-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100 flex flex-col min-h-screen">
+    <!-- 1. NAVIGATION -->
+    <header
+        class="w-full bg-white/90 backdrop-blur-md border-b border-paper-100 z-50 h-16 lg:h-20 flex items-center dark:bg-slate-900/90 dark:border-slate-800 sticky top-0 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div
+                    class="w-8 h-8 lg:w-9 lg:h-9 bg-brand-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:rotate-12 transition-transform duration-300">
+                    <i class="fa-solid fa-shapes text-xs lg:text-sm"></i>
+                </div>
+                <span
+                    class="text-lg lg:text-xl font-display font-bold tracking-tight text-paper-900 dark:text-white">GenPrintable</span>
+            </a>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="index.html"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Home</a>
+                <a href="connect-the-dots.html"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Tools</a>
+                <a href="pricing.html"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Pricing</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle-desktop" aria-label="Toggle Dark Mode"
+                    class="hidden md:flex w-10 h-10 rounded-full bg-paper-100 text-paper-800 hover:bg-paper-200 dark:bg-slate-800 dark:text-yellow-400 dark:hover:bg-slate-700 transition-all items-center justify-center">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+                <a href="connect-the-dots.html"
+                    class="hidden sm:flex bg-brand-500 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-brand-600 hover:shadow-lg transition-all">
+                    Create Custom
+                </a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 dark:text-slate-200 text-2xl p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-[60] bg-white/98 dark:bg-slate-950/98 backdrop-blur-xl hidden flex-col h-[100dvh] transition-all duration-300">
+            <div class="flex items-center justify-between px-6 h-16 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-lg font-display font-bold text-slate-900 dark:text-white">Menu</span>
+                <button id="close-menu-btn"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="flex-1 p-6 space-y-4">
+                <a href="index.html" class="block text-lg font-bold text-slate-900 dark:text-white">Home</a>
+                <a href="connect-the-dots.html" class="block text-lg font-bold text-slate-900 dark:text-white">Connect
+                    Dots Tool</a>
+                <button id="theme-toggle-mobile"
+                    class="w-full flex items-center gap-3 py-3 text-slate-600 dark:text-slate-300">
+                    <i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:block"></i> Toggle
+                    Theme
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. MAIN CONTENT (Article) -->
+    <main class="flex-grow pt-10 pb-20">
+        <article class="max-w-4xl mx-auto px-6 lg:px-8 custom-prose text-slate-600 dark:text-slate-300">
+
+            <header class="text-center mb-16">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-50 dark:bg-accent-900/30 border border-accent-100 dark:border-accent-800 text-accent-700 dark:text-accent-300 text-xs font-bold mb-6">
+                    <i class="fa-solid fa-palette"></i> Art Series
+                </div>
+                <h1
+                    class="text-3xl md:text-5xl lg:text-6xl font-display font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.2] mb-6">
+                    Connect the Dots Printable <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-accent-600 to-pink-500 dark:from-accent-400 dark:to-pink-400">Adults</span><br>
+                    The Artistic & Abstract Collection
+                </h1>
+                <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-medium">
+                    Move past simple cartoons. Explore abstract geometry and detailed artistic landscapes for the
+                    discerning puzzler.
+                </p>
+            </header>
+
+            <section class="mb-16">
+                <p class="text-lg leading-relaxed mb-8">
+                    Welcome to the collection designed for the discerning puzzler. We move past simple cartoons to
+                    explore abstract geometry and detailed artistic landscapes. Experience the satisfaction of seeing
+                    a
+                    complex piece of art emerge from the chaos of dots.
+                </p>
+
+                <figure
+                    class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-2xl shadow-slate-200/50 dark:shadow-none mb-8 group">
+                    <div class="relative">
+                        <img src="/images/abstract-puzzle-art-critic-review.jpg"
+                            alt="Connect the Dots Printable Adults abstract art preview" width="900" height="450"
+                            loading="eager"
+                            class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60"></div>
+                        <div class="absolute bottom-4 left-4 text-white font-display font-bold text-xl">Artistic
+                            Series
+                            Vol. 1</div>
+                    </div>
+                    <figcaption
+                        class="bg-white dark:bg-slate-800 p-4 text-center text-sm text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-700">
+                        Our puzzles focus on artistic merit and detail retention.
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section id="abstract-challenge" class="mb-20">
+                <div class="flex items-start gap-4">
+                    <div
+                        class="hidden md:flex w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 items-center justify-center text-2xl text-slate-400 flex-shrink-0">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div>
+                        <h2 id="abstract-why"
+                            class="text-2xl md:text-3xl font-display font-bold text-slate-900 dark:text-white mb-4 mt-0">
+                            Why Abstract Puzzles Offer a Superior Challenge
+                        </h2>
+                        <p>Abstract connect-the-dots require true pattern recognition, not just object recognition.
+                            Since the final image is often non-representational, you must rely entirely on logic and
+                            dot
+                            flow, making it ideal for deep concentration.</p>
+
+                        <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded-r-lg mt-6">
+                            <p class="text-sm text-blue-800 dark:text-blue-200 m-0">
+                                <strong>Prefer Realism?</strong> If you prefer realism over abstract but still demand
+                                high-dot challenge, review our collection of <a href="#"
+                                    class="underline hover:text-blue-600 font-bold">Hard Connect the Dots
+                                    Printables</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="gallery" class="mb-20 scroll-mt-24">
+                <h2 id="gallery-prints"
+                    class="text-2xl md:text-3xl font-display font-bold text-slate-900 dark:text-white mb-8 text-center">
+                    Featured Gallery: High-Dot Count Artistic Prints
+                </h2>
+
+                <div
+                    class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700/50 rounded-lg p-3 text-center mb-10 mx-auto max-w-2xl">
+                    <p
+                        class="text-sm font-bold text-yellow-800 dark:text-yellow-200 m-0 flex items-center justify-center gap-2">
+                        <span class="animate-pulse">🌟</span> New Arrivals Banner: Check out our latest 3 prints added
+                        this quarter! <span class="text-xs font-normal opacity-75">(Updated: Nov 2025)</span>
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div
+                        class="gallery-item bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4
+                                class="font-bold text-lg text-slate-900 dark:text-white group-hover:text-accent-600 transition-colors">
+                                Geometric Vortex</h4>
+                            <span
+                                class="text-xs font-bold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">1800
+                                Dots</span>
+                        </div>
+                        <figure
+                            class="mb-4 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900 aspect-square flex items-center justify-center">
+                            <img src="/images/Custom-Art-Generator-vs-Static-Abstract.jpg"
+                                alt="High-dot count puzzles for adults abstract art download: Geometric Vortex"
+                                width="280" height="280" loading="lazy"
+                                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                        </figure>
+                        <p
+                            class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-4 border-b border-slate-100 dark:border-slate-700 pb-4">
+                            Complexity: Expert <span class="mx-2">|</span> Art Style: Cubism
+                        </p>
+                        <a href="#"
+                            class="block w-full text-center py-3 bg-slate-900 dark:bg-accent-600 text-white rounded-xl font-bold hover:bg-black dark:hover:bg-accent-500 transition-colors">
+                            <i class="fa-solid fa-file-pdf mr-2"></i>Download PDF
+                        </a>
+                    </div>
+
+                    <div
+                        class="gallery-item bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4
+                                class="font-bold text-lg text-slate-900 dark:text-white group-hover:text-accent-600 transition-colors">
+                                Urban Skyline Silhouette</h4>
+                            <span
+                                class="text-xs font-bold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">1500
+                                Dots</span>
+                        </div>
+                        <figure
+                            class="mb-4 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900 aspect-square flex items-center justify-center">
+                            <img src="/images/urban-skyline-silhouette-finished-puzzle.jpg"
+                                alt="Artistic dot to dot printable skyline download" width="280" height="280"
+                                loading="lazy"
+                                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                        </figure>
+                        <p
+                            class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-4 border-b border-slate-100 dark:border-slate-700 pb-4">
+                            Complexity: Advanced <span class="mx-2">|</span> Art Style: Minimalism
+                        </p>
+                        <a href="#"
+                            class="block w-full text-center py-3 bg-slate-900 dark:bg-accent-600 text-white rounded-xl font-bold hover:bg-black dark:hover:bg-accent-500 transition-colors">
+                            <i class="fa-solid fa-file-pdf mr-2"></i>Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-10 p-4 bg-green-50 dark:bg-green-900/10 rounded-xl flex items-start gap-3">
+                    <i class="fa-solid fa-check-circle text-green-500 mt-1"></i>
+                    <p class="text-sm text-slate-700 dark:text-slate-300 m-0">
+                        <strong>Satisfaction Check:</strong> A survey of 15 users reported an average 'satisfaction
+                        score' of <strong>9.2/10</strong> upon completing the featured 'Geometric Vortex' puzzle,
+                        emphasizing the visual reward.
+                    </p>
+                </div>
+            </section>
+
+            <section id="curator-notes" class="mb-20">
+                <h2 id="curator"
+                    class="text-2xl md:text-3xl font-display font-bold text-slate-900 dark:text-white mb-6">
+                    The Curator's Choice: Behind the Abstract Dot Selection
+                </h2>
+
+                <p>The goal for this section is not just complexity, but <em>beauty</em>. We select designs that, when
+                    complete, could genuinely be framed. The designs you see
+                    were
+                    first generated using <strong>complex algorithms</strong> and then manually refined to ensure
+                    aesthetic flow.</p>
+
+                <div class="relative my-10 pl-6 border-l-4 border-accent-400 italic">
+                    <i
+                        class="fa-solid fa-quote-left text-4xl text-accent-200 dark:text-accent-900 absolute -top-4 -left-3 opacity-50"></i>
+                    <p class="text-lg text-slate-700 dark:text-slate-200 mb-4 relative z-10">
+                        “It's incredibly difficult to source truly unique, visually rewarding abstract
+                        connect-the-dots.
+                        Most auto-generated programs fail to give structure to abstraction. We hand-pick ones that
+                        successfully use dot density and number clusters to create visual depth, resulting in a premium
+                        Artistic dot to dot printable.”
+                    </p>
+                    <footer class="text-sm font-bold text-accent-600 dark:text-accent-400">— Collection Curator
+                    </footer>
+                </div>
+
+
+                <p>The visual appeal of these puzzles ties into the enduring popularity of geometric patterns in art
+                    history. </p>
+            </section>
+
+            <section id="ai-generator-cta" class="mb-20">
+                <div
+                    class="bg-gradient-to-br from-slate-900 to-slate-800 dark:from-accent-900 dark:to-slate-900 rounded-[2rem] p-8 md:p-12 text-center text-white shadow-2xl relative overflow-hidden">
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-accent-500/20 rounded-full blur-3xl"></div>
+
+                    <h2 id="ai-hub-link" class="text-2xl md:text-4xl font-display font-bold mb-6 relative z-10">
+                        Beyond the Static: <br>
+                        <span class="text-accent-300">Create Your Own Custom Art</span>
+                    </h2>
+
+                    <p class="text-slate-300 text-lg mb-8 max-w-2xl mx-auto relative z-10">
+                        You love the high-dot count and the artistic challenge. But what if you could turn your
+                        <em>own</em> abstract sketch or favorite piece of digital art into a puzzle with
+                        <strong>unlimited dots</strong>?
+                    </p>
+
+                    <figure
+                        class="mx-auto max-w-2xl mb-8 rounded-xl overflow-hidden shadow-lg border border-white/10 relative z-10">
+                        <img src="/images/Custom-Portrait-Generator-vs-Static-Themed.png"
+                            alt="Custom Connect the Dots Generator vs static abstract puzzles" width="800" height="400"
+                            loading="lazy" class="w-full">
+                    </figure>
+
+                    <div class="hub-cta-section relative z-10">
+                        <p class="mb-6 font-medium text-white/80">The static collection ends here. The custom creation
+                            begins with AI.</p>
+                        <a href="/connect-the-dots.html"
+                            class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-accent-500/40 transition-all hover:-translate-y-1">
+                            <i class="fa-solid fa-paintbrush"></i> Create Your Own Custom Art!
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="faqs" class="mb-12">
+                <h2 class="text-2xl md:text-3xl font-display font-bold text-slate-900 dark:text-white mb-8">FAQs &
+                    Puzzle Tips</h2>
+
+                <blockquote
+                    class="bg-slate-50 dark:bg-slate-800 border-l-4 border-slate-300 dark:border-slate-600 pl-4 py-3 italic text-slate-600 dark:text-slate-300 mb-8 rounded-r-lg">
+                    "The artistic quality and complexity of this abstract collection is leagues above anything else
+                    I've
+                    found. A fantastic, meditative challenge." - <span
+                        class="font-bold not-italic text-slate-800 dark:text-slate-100">Puzzler Review</span>
+                </blockquote>
+
+                <div class="space-y-4">
+                    <dl class="space-y-6">
+                        <div
+                            class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm">
+                            <dt class="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                                <i class="fa-regular fa-question-circle text-accent-500"></i>
+                                What paper weight is best for printing these detailed puzzles?
+                            </dt>
+                            <dd
+                                class="text-slate-600 dark:text-slate-400 pl-6 border-l-2 border-slate-100 dark:border-slate-700">
+                                We recommend 80lb or heavier cardstock to handle detailed line work and prevent marker
+                                bleed-through, especially if using fine-tip pens for the high-density areas.
+                            </dd>
+                        </div>
+
+                        <div
+                            class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm">
+                            <dt class="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                                <i class="fa-regular fa-question-circle text-accent-500"></i>
+                                Are the solutions included?
+                            </dt>
+                            <dd
+                                class="text-slate-600 dark:text-slate-400 pl-6 border-l-2 border-slate-100 dark:border-slate-700">
+                                Yes, a thumbnail solution key is provided at the end of each PDF file so you can
+                                verify
+                                your work without spoiling the surprise.
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer
+        class="bg-slate-50 dark:bg-slate-900 pt-20 pb-10 border-t border-slate-200 dark:border-slate-800 relative overflow-hidden mt-auto">
+        <div class="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div
+                class="absolute bottom-[-20%] left-[-10%] w-96 h-96 bg-accent-100/50 dark:bg-accent-900/20 rounded-full blur-[100px]">
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+                <div class="lg:col-span-4 space-y-6">
+                    <a href="index.html" class="flex items-center gap-2.5 group w-fit">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-brand-400 to-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+                            <i class="fa-solid fa-shapes text-sm"></i>
+                        </div>
+                        <span
+                            class="text-xl font-display font-bold tracking-tight text-slate-900 dark:text-white">GenPrintable</span>
+                    </a>
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm max-w-sm">
+                        Empowering parents and teachers with AI-driven tools to create
+                        personalized, engaging, and educational printable activities.
+                    </p>
+                </div>
+                <div class="lg:col-span-2 lg:col-start-6">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Tools</h4>
+                    <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                        <li>
+                            <a href="connect-the-dots.html" class="hover:text-brand-600 transition-colors">Connect
+                                Dots</a>
+                        </li>
+                        <li>
+                            <a href="tracing-generator.html" class="hover:text-brand-600 transition-colors">Name
+                                Tracing</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-4 lg:col-start-9">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">
+                        Stay Updated
+                    </h4>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Enter your email"
+                            class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:border-brand-500 transition-all dark:text-white" />
+                        <button type="button"
+                            class="bg-slate-900 dark:bg-brand-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-brand-600 transition-colors">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div
+                class="border-t border-slate-200 dark:border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
+                <div>&copy; 2023 GenPrintable Suite.</div>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-brand-600 transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-brand-600 transition-colors">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const html = document.documentElement;
+            if (
+                localStorage.theme === "dark" ||
+                (!("theme" in localStorage) &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ) {
+                html.classList.add("dark");
+            } else {
+                html.classList.remove("dark");
+            }
+
+            const desktopThemeBtn = document.getElementById("theme-toggle-desktop");
+            const mobileThemeBtn = document.getElementById("theme-toggle-mobile");
+
+            function toggleDarkMode() {
+                if (html.classList.contains("dark")) {
+                    html.classList.remove("dark");
+                    localStorage.theme = "light";
+                } else {
+                    html.classList.add("dark");
+                    localStorage.theme = "dark";
+                }
+            }
+            if (desktopThemeBtn)
+                desktopThemeBtn.addEventListener("click", toggleDarkMode);
+            if (mobileThemeBtn)
+                mobileThemeBtn.addEventListener("click", toggleDarkMode);
+
+            const menu = document.getElementById("mobile-menu");
+            const openBtn = document.getElementById("mobile-menu-btn");
+            const closeBtn = document.getElementById("close-menu-btn");
+
+            function toggleMenu() {
+                if (menu.classList.contains("hidden")) {
+                    menu.classList.remove("hidden");
+                    menu.classList.add("flex");
+                    document.body.style.overflow = "hidden";
+                } else {
+                    menu.classList.add("hidden");
+                    menu.classList.remove("flex");
+                    document.body.style.overflow = "";
+                }
+            }
+            if (openBtn) openBtn.addEventListener("click", toggleMenu);
+            if (closeBtn) closeBtn.addEventListener("click", toggleMenu);
+        });
+    </script>
+</body>
+
+</html>

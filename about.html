@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - GenPrintable | Education Meets Imagination</title>
+    <meta name="description"
+        content="Learn about the story behind GenPrintable. Founded by parents, powered by AI, and designed to provide personalized educational resources for kids.">
+
+    <!-- 核心技术栈 (与首页保持一致) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Outfit', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b'
+                        },
+                        accent: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            900: '#4c1d95'
+                        },
+                        paper: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 800: '#292524', 900: '#1c1917' }
+                    },
+                    boxShadow: {
+                        'pop': '0 15px 40px -10px rgba(13, 148, 136, 0.15)',
+                        'card': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-bg {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
+            background-size: 32px 32px;
+        }
+
+        .dark .hero-bg {
+            background-color: #0f172a;
+            background-image: radial-gradient(#1e293b 1.5px, transparent 1.5px);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-paper-50 text-paper-800 font-sans antialiased selection:bg-brand-100 selection:text-brand-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100 flex flex-col min-h-screen">
+
+    <!-- 1. NAVIGATION (与首页保持完全一致) -->
+    <header
+        class="w-full bg-white/90 backdrop-blur-md border-b border-paper-100 z-50 h-16 lg:h-20 flex items-center dark:bg-slate-900/90 dark:border-slate-800 sticky top-0 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div
+                    class="w-8 h-8 lg:w-9 lg:h-9 bg-brand-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:rotate-12 transition-transform duration-300">
+                    <i class="fa-solid fa-shapes text-xs lg:text-sm"></i>
+                </div>
+                <span
+                    class="text-lg lg:text-xl font-display font-bold tracking-tight text-paper-900 dark:text-white">GenPrintable</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-6">
+                <div class="relative group h-16 lg:h-20 flex items-center">
+                    <button
+                        class="flex items-center gap-1 text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400 focus:outline-none">
+                        Tools
+                        <i
+                            class="fa-solid fa-chevron-down text-xs opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+                    </button>
+                    <!-- Tools Dropdown -->
+                    <div
+                        class="absolute top-full left-1/2 -translate-x-1/2 w-[480px] bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 p-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50 grid grid-cols-2 gap-2">
+                        <a href="connect-the-dots.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-circle-nodes text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Connect Dots</div>
+                            </div>
+                        </a>
+                        <a href="tracing-generator.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-sky-100 dark:bg-sky-900/30 text-sky-500 dark:text-sky-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-pen-fancy text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Name Tracing</div>
+                            </div>
+                        </a>
+                        <!-- Add other links as needed -->
+                        <a href="cut-and-paste-crafts.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-accent-100 dark:bg-accent-900/30 text-accent-600 dark:text-accent-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-scissors text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Paper Crafts</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="index.html#difference"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Features</a>
+                <a href="pricing.html"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Pricing</a>
+                <a href="about.html"
+                    class="text-sm font-bold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/20 px-3 py-1 rounded-full transition-colors">About</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle-desktop" aria-label="Toggle Dark Mode"
+                    class="hidden md:flex w-10 h-10 rounded-full bg-paper-100 text-paper-800 hover:bg-paper-200 dark:bg-slate-800 dark:text-yellow-400 dark:hover:bg-slate-700 transition-all items-center justify-center">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+                <a href="tracing-generator.html"
+                    class="hidden sm:flex bg-brand-500 text-white px-5 py-2 lg:px-6 lg:py-2.5 rounded-full text-xs lg:text-sm font-bold hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/30 hover:-translate-y-0.5 transition-all">
+                    Start Creating
+                </a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 dark:text-slate-200 text-2xl p-2"><i
+                    class="fa-solid fa-bars"></i></button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-[60] bg-white/98 dark:bg-slate-950/98 backdrop-blur-xl hidden flex-col h-[100dvh] transition-all duration-300">
+            <div
+                class="flex items-center justify-between px-6 h-16 border-b border-slate-100 dark:border-slate-800 flex-shrink-0 bg-white/50 dark:bg-slate-900/50">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white"><i
+                            class="fa-solid fa-shapes text-xs lg:text-sm"></i></div>
+                    <span class="text-lg font-display font-bold text-slate-900 dark:text-white">GenPrintable</span>
+                </div>
+                <button id="close-menu-btn"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto px-6 py-6 scrollbar-hide bg-white dark:bg-slate-900">
+                <div class="flex flex-col space-y-2 mb-8">
+                    <a href="index.html" class="text-lg font-bold text-slate-800 dark:text-slate-200 p-2">Home</a>
+                    <a href="index.html#generators"
+                        class="text-lg font-bold text-slate-800 dark:text-slate-200 p-2">Tools</a>
+                    <a href="about.html" class="text-lg font-bold text-brand-600 dark:text-brand-400 p-2">About Us</a>
+                </div>
+            </div>
+            <!-- Mobile Dark Toggle -->
+            <div
+                class="p-6 border-t border-slate-100 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 flex-shrink-0">
+                <button id="theme-toggle-mobile" aria-label="Toggle Dark Mode"
+                    class="w-full flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-yellow-400 font-bold active:scale-95 transition-transform">
+                    <i class="fa-solid fa-moon dark:hidden text-slate-500"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                    <span class="dark:text-white text-slate-600">Switch Appearance</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. HERO HEADER -->
+    <section class="relative pt-20 pb-20 lg:pt-32 lg:pb-24 hero-bg overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden">
+            <div
+                class="absolute -top-40 -right-40 w-96 h-96 bg-brand-200/40 dark:bg-brand-900/20 rounded-full blur-[100px] animate-blob">
+            </div>
+            <div
+                class="absolute top-20 -left-20 w-72 h-72 bg-accent-200/40 dark:bg-accent-900/20 rounded-full blur-[80px] animate-blob animation-delay-2000">
+            </div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center animate-fade-in-up">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold tracking-widest uppercase mb-6 border border-brand-200 dark:border-brand-800">Our
+                Mission</span>
+            <h1
+                class="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-paper-900 dark:text-white tracking-tight mb-6 leading-tight">
+                About <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-accent-500">GenPrintable</span>
+            </h1>
+            <p
+                class="text-xl md:text-2xl text-slate-500 dark:text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed">
+                GenPrintable: Education Meets Imagination. <span
+                    class="text-slate-800 dark:text-slate-200 font-bold">Instantly.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. MAIN CONTENT -->
+    <main class="flex-grow">
+
+        <!-- SECTION: OUR STORY -->
+        <section id="our-story" class="py-20 lg:py-28 bg-white dark:bg-slate-950 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <!-- Text Content -->
+                    <div class="order-2 lg:order-1">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div
+                                class="w-12 h-12 rounded-full bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center text-accent-600 dark:text-accent-400 text-xl">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </div>
+                            <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-white">Our Genesis</h2>
+                        </div>
+                        <h3 class="text-xl text-slate-800 dark:text-slate-200 font-bold mb-6">Born from a Parent's Desk
+                        </h3>
+
+                        <div class="space-y-6 text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+                            <p>
+                                GenPrintable.com was born out of a very real, everyday challenge: the constant need for
+                                <span
+                                    class="text-brand-600 dark:text-brand-400 font-bold bg-brand-50 dark:bg-brand-900/20 px-1 rounded">diverse
+                                    and engaging educational printables</span> for our own children's homework. From
+                                handwriting practice and letter tracing to math drills and fine motor crafts, the demand
+                                for varied, high-quality, and age-appropriate resources felt endless.
+                            </p>
+                            <p>
+                                After finding initial success and receiving positive feedback from users on an earlier
+                                project (Connect The Dots Printable), we were encouraged to launch a dedicated, premium
+                                brand. That's why we created <span
+                                    class="text-slate-900 dark:text-white font-bold">GenPrintable.com</span>, merging
+                                the words <span class="italic">Generator</span> and <span
+                                    class="italic">Printable</span> to define our core purpose.
+                            </p>
+                            <p class="border-l-4 border-brand-500 pl-4 italic text-slate-700 dark:text-slate-300">
+                                We are a brand focused on <strong>Edutainment</strong>—providing comprehensive,
+                                expert-backed printable solutions for families and educators worldwide. We believe in
+                                providing value, not just files.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Visual Side -->
+                    <div class="order-1 lg:order-2 relative perspective-1000">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-brand-100 to-accent-100 dark:from-brand-900/20 dark:to-accent-900/20 rounded-[3rem] transform rotate-3 scale-95 opacity-70">
+                        </div>
+                        <div
+                            class="relative bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[2.5rem] p-8 shadow-xl">
+                            <!-- Abstract Illustration Representation -->
+                            <div
+                                class="aspect-square relative flex items-center justify-center overflow-hidden rounded-2xl bg-white dark:bg-slate-800">
+                                <div
+                                    class="absolute w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 dark:opacity-5">
+                                </div>
+                                <div class="relative z-10 text-center">
+                                    <div class="inline-flex gap-4 mb-4">
+                                        <span
+                                            class="w-16 h-16 rounded-2xl bg-brand-500 text-white flex items-center justify-center text-3xl shadow-lg shadow-brand-500/30 animate-bounce"><i
+                                                class="fa-solid fa-print"></i></span>
+                                        <span
+                                            class="w-16 h-16 rounded-2xl bg-accent-500 text-white flex items-center justify-center text-3xl shadow-lg shadow-accent-500/30 animate-bounce delay-100"><i
+                                                class="fa-solid fa-wand-magic-sparkles"></i></span>
+                                    </div>
+                                    <div class="text-4xl font-display font-bold text-slate-300 dark:text-slate-600">
+                                        Generator + Printable</div>
+                                    <div class="mt-2 text-sm text-slate-400 font-mono uppercase tracking-widest">=
+                                        GenPrintable</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: OUR VISION (Core Pillars) -->
+        <section id="our-vision"
+            class="py-20 lg:py-28 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span
+                        class="text-brand-600 dark:text-brand-400 font-bold uppercase tracking-widest text-xs mb-3 block">Why
+                        We Exist</span>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-6">The
+                        GenPrintable Difference</h2>
+                    <p class="text-lg text-slate-500 dark:text-slate-400">
+                        Our goal is to transcend being just a passive file archive. We leverage technology and expertise
+                        to actively assist in the educational journey.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Pillar 1 -->
+                    <div
+                        class="group bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 border border-slate-100 dark:border-slate-700 hover:-translate-y-1">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">AI-Powered Customization</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                            Our unique selling proposition is the <strong class="text-brand-600 dark:text-brand-400">AI
+                                Generator</strong>. It instantly creates personalized templates based on inputs like
+                            age, skill focus (e.g., straight-line cutting), and theme, ensuring every resource is
+                            developmentally appropriate.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div
+                        class="group bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:shadow-accent-500/10 transition-all duration-300 border border-slate-100 dark:border-slate-700 hover:-translate-y-1">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-accent-100 dark:bg-accent-900/30 text-accent-600 dark:text-accent-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Professional Expertise</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                            We prioritize <strong class="text-accent-600 dark:text-accent-400">Professional
+                                Validation</strong>. Our craft templates and tracing logic are developed in consultation
+                            with pediatric Occupational Therapists (OTs). This ensures that every curve and cut line is
+                            scientifically designed to support age-appropriate fine motor skill development.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div
+                        class="group bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300 border border-slate-100 dark:border-slate-700 hover:-translate-y-1">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-hands-holding-circle"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Comprehensive & Accessible
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                            We aim to be the go-to source for a full spectrum of high-quality, <strong
+                                class="text-sky-600 dark:text-sky-400">free-to-use</strong> educational printables—from
+                            complex mazes to simple number tracing sheets. We promise to remain dedicated to effective
+                            learning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CONTACT -->
+        <section id="contact-us" class="py-20 bg-brand-900 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10"
+                style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;">
+            </div>
+            <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+                <div
+                    class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur border border-white/20 mb-8 text-white text-2xl">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-6">Get In Touch</h2>
+                <p class="text-brand-100 text-lg mb-8 max-w-2xl mx-auto">
+                    We value every user's feedback, question, or suggestion. If you need support, want to discuss a
+                    partnership, or just want to share a success story, please reach out.
+                </p>
+                <div
+                    class="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 inline-block border border-white/10 hover:bg-white/15 transition-colors">
+                    <p class="text-brand-200 text-sm font-bold uppercase tracking-wider mb-2">Email Us At</p>
+                    <a href="mailto:support@genprintable.com"
+                        class="text-2xl md:text-3xl font-bold text-white hover:text-accent-300 transition-colors">support@genprintable.com</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (与首页保持一致) -->
+    <footer
+        class="bg-slate-50 dark:bg-slate-900 pt-20 pb-10 border-t border-slate-200 dark:border-slate-800 relative overflow-hidden mt-auto">
+        <div class="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div
+                class="absolute bottom-[-20%] left-[-10%] w-96 h-96 bg-brand-100/50 dark:bg-brand-900/20 rounded-full blur-[100px]">
+            </div>
+            <div
+                class="absolute top-[-20%] right-[-10%] w-96 h-96 bg-accent-100/30 dark:bg-accent-900/20 rounded-full blur-[100px]">
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+                <div class="lg:col-span-4 space-y-6">
+                    <a href="index.html" class="flex items-center gap-2.5 group w-fit">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-brand-400 to-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+                            <i class="fa-solid fa-leaf text-sm"></i>
+                        </div>
+                        <span
+                            class="text-xl font-display font-bold tracking-tight text-slate-900 dark:text-white">GenPrintable</span>
+                    </a>
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm max-w-sm">
+                        Empowering parents and teachers with AI-driven tools to create personalized, engaging, and
+                        educational printable activities in seconds.
+                    </p>
+                </div>
+                <div class="lg:col-span-2 lg:col-start-6">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Generators</h4>
+                    <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="connect-the-dots.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Connect
+                                Dots</a></li>
+                        <li><a href="tracing-generator.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Name
+                                Tracing</a></li>
+                        <li><a href="cut-and-paste-crafts.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Paper
+                                Crafts</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-2">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Company</h4>
+                    <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="about.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">About Us</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Contact</a>
+                        </li>
+                        <li><a href="privacy.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Privacy
+                                Policy</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-3">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Newsletter</h4>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Enter your email"
+                            class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:border-brand-500 dark:text-white">
+                        <button type="button"
+                            class="bg-brand-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-brand-700 transition-colors">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div
+                class="border-t border-slate-200 dark:border-slate-700 pt-8 text-center md:text-left text-sm text-slate-400">
+                &copy; 2023 GenPrintable Suite. Made with <i class="fa-solid fa-heart text-accent-400 mx-1"></i> for
+                kids.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts (复制自首页，确保功能一致) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Dark Mode Init
+            const html = document.documentElement;
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+
+            // Dark Mode Toggle
+            const desktopThemeBtn = document.getElementById('theme-toggle-desktop');
+            const mobileThemeBtn = document.getElementById('theme-toggle-mobile');
+
+            function toggleDarkMode() {
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    html.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+            }
+            if (desktopThemeBtn) desktopThemeBtn.addEventListener('click', toggleDarkMode);
+            if (mobileThemeBtn) mobileThemeBtn.addEventListener('click', toggleDarkMode);
+
+            // Mobile Menu
+            const menu = document.getElementById('mobile-menu');
+            const openBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-menu-btn');
+
+            function toggleMenu() {
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    menu.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    document.body.style.overflow = '';
+                }
+            }
+            if (openBtn) openBtn.addEventListener('click', toggleMenu);
+            if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
+        });
+    </script>
+</body>
+
+</html>

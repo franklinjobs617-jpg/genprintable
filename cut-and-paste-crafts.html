@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenPrintable - 剪贴手工生成器</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .toolbar {
+            padding: 10px;
+            background-color: #eee;
+            display: flex;
+            gap: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .canvas-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ddd;
+        }
+
+        /* 预览画布：模拟 A4 纸 */
+        #preview-canvas {
+            width: 400px;
+            /* 预览尺寸 */
+            height: 565px;
+            background-color: white;
+            border: 1px solid #333;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 零件样式 */
+        .part-preview {
+            cursor: pointer;
+            border: 1px solid transparent;
+            padding: 5px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        .part-preview:hover {
+            border-color: #007bff;
+        }
+
+        .part-item {
+            cursor: grab;
+        }
+
+        .part-item:hover {
+            opacity: 0.8;
+        }
+
+        .section-title {
+            margin-top: 15px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            font-weight: bold;
+        }
+
+        /* 选中状态 */
+        .selected-part {
+            outline: 2px dashed red;
+            /* 选中边框 */
+            cursor: move !important;
+        }
+
+        /* 打印容器隐藏 */
+        #print-layout-container {
+            position: absolute;
+            top: -5000px;
+            /* 移出视口 */
+            width: 794px;
+            /* A4 尺寸 72dpi */
+            height: 1123px;
+            background-color: white;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h2>🛠️ 配置面板</h2>
+
+        <div id="part-selection">
+            <div class="section-title">📦 零件包 (恐龙主题)</div>
+            <p>点击零件添加到画布：</p>
+            <div id="parts-kit">
+            </div>
+        </div>
+
+        <hr>
+
+        <div id="part-config">
+            <div class="section-title">⚙️ 调整选中零件</div>
+            <p id="selected-info">请选择一个零件。</p>
+
+            <label for="partColor">填充颜色:</label>
+            <input type="color" id="partColor" value="#508D4E" oninput="changeSelectedPartColor(this.value)" disabled>
+
+            <button onclick="deleteSelectedPart()" style="margin-top: 10px; display: block;">🗑️ 删除零件</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="toolbar">
+            <h1>GenPrintable.com</h1>
+            <button onclick="exportToPDF()"
+                style="background-color: #28a745; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                📥 生成可打印 PDF
+            </button>
+        </div>
+
+        <div class="canvas-container">
+            <svg id="preview-canvas" viewBox="0 0 400 565"></svg>
+        </div>
+    </div>
+
+    <div id="print-layout-container">
+    </div>
+
+    <script>
+        const canvas = document.getElementById('preview-canvas');
+        const printContainer = document.getElementById('print-layout-container');
+        const partsKitDiv = document.getElementById('parts-kit');
+        let selectedPart = null;
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        // --- 1. 预设零件 SVG 数据 (恐龙主题) ---
+        const PARTS = [
+            { id: 'body', name: '身体', color: '#508D4E', svg: '<path d="M50,50 C 150,0 250,100 250,150 C 200,250 50,200 50,50 Z"/>' },
+            { id: 'head', name: '头部', color: '#60A917', svg: '<circle cx="100" cy="100" r="40"/>' },
+            { id: 'leg', name: '腿', color: '#407D3E', svg: '<rect x="0" y="0" width="20" height="60" rx="10"/>' },
+            { id: 'eye', name: '眼睛', color: 'white', svg: '<circle cx="10" cy="10" r="5" fill="white" stroke="black" stroke-width="2"/>' }
+        ];
+
+        // --- 2. 交互控制函数 ---
+
+        function setSelectedPart(part) {
+            if (selectedPart) {
+                selectedPart.classList.remove('selected-part');
+            }
+            selectedPart = part;
+            if (part) {
+                part.classList.add('selected-part');
+                document.getElementById('selected-info').textContent = `选中: ${part.getAttribute('data-name')}`;
+                document.getElementById('partColor').value = part.getAttribute('fill');
+                document.getElementById('partColor').disabled = false;
+            } else {
+                document.getElementById('selected-info').textContent = '请选择一个零件。';
+                document.getElementById('partColor').disabled = true;
+            }
+        }
+
+        function changeSelectedPartColor(color) {
+            if (selectedPart) {
+                selectedPart.setAttribute('fill', color);
+            }
+        }
+
+        function deleteSelectedPart() {
+            if (selectedPart) {
+                selectedPart.remove();
+                setSelectedPart(null);
+            }
+        }
+
+        // --- 3. 拖拽逻辑 (基础) ---
+
+        canvas.addEventListener('mousedown', dragStart);
+        canvas.addEventListener('mouseup', dragEnd);
+        canvas.addEventListener('mousemove', drag);
+
+        function dragStart(e) {
+            // 找到点击的 SVG 元素 (part-item)
+            const target = e.target.closest('.part-item');
+            if (target) {
+                setSelectedPart(target);
+                isDragging = true;
+                e.preventDefault();
+
+                // 获取初始点击坐标 (相对于 SVG viewBox)
+                const point = canvas.createSVGPoint();
+                point.x = e.clientX;
+                point.y = e.clientY;
+                const CTM = canvas.getScreenCTM().inverse();
+                const initialPoint = point.matrixTransform(CTM);
+
+                initialX = initialPoint.x;
+                initialY = initialPoint.y;
+
+                // 获取初始转换值
+                const transform = target.getAttribute('transform');
+                const match = transform ? transform.match(/translate\(([^,]+),([^)]+)\)/) : null;
+                xOffset = match ? parseFloat(match[1]) : 0;
+                yOffset = match ? parseFloat(match[2]) : 0;
+            } else {
+                setSelectedPart(null);
+            }
+        }
+
+        function dragEnd(e) {
+            isDragging = false;
+        }
+
+        function drag(e) {
+            if (!isDragging || !selectedPart) return;
+            e.preventDefault();
+
+            const point = canvas.createSVGPoint();
+            point.x = e.clientX;
+            point.y = e.clientY;
+            const CTM = canvas.getScreenCTM().inverse();
+            const currentPoint = point.matrixTransform(CTM);
+
+            const dx = currentPoint.x - initialX;
+            const dy = currentPoint.y - initialY;
+
+            currentX = xOffset + dx;
+            currentY = yOffset + dy;
+
+            selectedPart.setAttribute('transform', `translate(${currentX}, ${currentY})`);
+        }
+
+        // --- 4. 初始化和添加零件 ---
+
+        function createPart(partData) {
+            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            group.innerHTML = partData.svg;
+
+            // 获取实际的 SVG 元素（可能是 path, circle, rect 等）
+            const partElement = group.children[0];
+
+            // 设置初始属性
+            partElement.setAttribute('fill', partData.color);
+            partElement.setAttribute('stroke', 'black');
+            partElement.setAttribute('stroke-width', 2);
+            partElement.classList.add('part-item');
+            partElement.setAttribute('data-name', partData.name);
+
+            // 随机初始位置
+            const randX = Math.floor(Math.random() * 150) + 50;
+            const randY = Math.floor(Math.random() * 150) + 50;
+            partElement.setAttribute('transform', `translate(${randX}, ${randY})`);
+
+            canvas.appendChild(partElement);
+        }
+
+        function initPartKit() {
+            PARTS.forEach(part => {
+                const div = document.createElement('div');
+                div.classList.add('part-preview');
+                div.innerHTML = part.name;
+                div.onclick = () => createPart(part);
+                partsKitDiv.appendChild(div);
+            });
+        }
+
+        // --- 5. 核心：生成可打印 PDF 逻辑 (打印布局和虚线剪切线) ---
+
+        function createCutline(svgElement) {
+            const cutline = svgElement.cloneNode(true);
+
+            // 清除填充，添加虚线描边
+            cutline.setAttribute('fill', 'none');
+            cutline.setAttribute('stroke', 'black');
+            cutline.setAttribute('stroke-width', 3); // 剪切线可以粗一点
+            cutline.setAttribute('stroke-dasharray', '5 5'); // 虚线
+
+            // 放大一点，确保虚线在实线外部
+            const transform = svgElement.getAttribute('transform');
+            cutline.setAttribute('transform', `${transform} scale(1.05)`);
+
+            return cutline;
+        }
+
+        async function exportToPDF() {
+            // 1. 清空并准备隐藏的打印容器
+            printContainer.innerHTML = '';
+
+            // 2. 获取所有零件
+            const parts = Array.from(canvas.querySelectorAll('.part-item'));
+            if (parts.length === 0) {
+                alert('请先在画布上添加零件！');
+                return;
+            }
+
+            let currentX = 20; // 打印布局的起始X
+            let currentY = 20; // 打印布局的起始Y
+            const maxX = 750; // A4 纸宽度限制 (约794px)
+            const margin = 10; // 零件间距
+
+            // 3. 自动布局和添加虚线剪切线
+            parts.forEach(part => {
+                // 克隆实线零件
+                const solidPart = part.cloneNode(true);
+                solidPart.classList.remove('selected-part');
+
+                // 创建虚线剪切线
+                const cutlinePart = createCutline(part);
+
+                // 获取零件的尺寸 (这里使用 bbox 获取的是 SVG 的原始尺寸)
+                const bbox = part.getBBox();
+                const partWidth = bbox.width * 1.05; // 考虑放大的剪切线
+                const partHeight = bbox.height * 1.05;
+
+                // 简单的自动换行布局逻辑
+                if (currentX + partWidth + margin > maxX) {
+                    currentX = 20; // 换行
+                    currentY += partHeight + margin;
+                }
+
+                // 创建一个组，包含虚线和实线零件
+                const partGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                partGroup.setAttribute('transform', `translate(${currentX}, ${currentY})`);
+
+                // 移除原有转换，使其在组内从 (0,0) 开始
+                solidPart.setAttribute('transform', '');
+                cutlinePart.setAttribute('transform', 'scale(1.05)'); // 只保留缩放
+
+                partGroup.appendChild(cutlinePart);
+                partGroup.appendChild(solidPart);
+
+                printContainer.appendChild(partGroup);
+
+                currentX += partWidth + margin; // 移动到下一个位置
+            });
+
+            // 4. 将打印容器（现在里面是所有拆散的零件）导出为 PDF
+            alert('正在生成 PDF，请稍候...');
+
+            // 确保打印容器可见且有内容
+            printContainer.style.position = 'static'; // 临时显示
+
+            const element = printContainer;
+
+            // 使用 html2canvas 将 SVG DOM 渲染为 Canvas (高分辨率)
+            html2canvas(element, { scale: 1.5, useCORS: true }).then(canvas => {
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgData = canvas.toDataURL('image/png');
+
+                const imgWidth = 210; // A4 宽度 (mm)
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                pdf.save('GenPrintable_Craft.pdf');
+
+                // 恢复隐藏
+                printContainer.style.position = 'absolute';
+                printContainer.innerHTML = '';
+                alert('PDF 生成成功！');
+            }).catch(error => {
+                console.error('PDF 导出失败:', error);
+                alert('PDF 导出失败，请检查控制台错误。');
+                printContainer.style.position = 'absolute';
+            });
+        }
+
+        // 页面加载完成时初始化
+        window.onload = () => {
+            initPartKit();
+            // 默认创建一个头部和身体
+            createPart(PARTS[0]);
+            createPart(PARTS[1]);
+        };
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - GenPrintable.com</title>
+    <meta name="description"
+        content="Privacy Policy and Data Collection practices for GenPrintable.com. Learn how we handle your data, AdSense cookies, and privacy rights.">
+
+    <!-- 核心技术栈 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Outfit', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b'
+                        },
+                        accent: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            900: '#4c1d95'
+                        },
+                        paper: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 800: '#292524', 900: '#1c1917' }
+                    },
+                    typography: {
+                        DEFAULT: {
+                            css: {
+                                color: '#475569',
+                                a: {
+                                    color: '#059669',
+                                    '&:hover': {
+                                        color: '#047857',
+                                    },
+                                },
+                            },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-paper-50 text-paper-800 font-sans antialiased selection:bg-brand-100 selection:text-brand-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100 flex flex-col min-h-screen">
+
+    <!-- 1. NAVIGATION -->
+    <header
+        class="w-full bg-white/90 backdrop-blur-md border-b border-paper-100 z-50 h-16 lg:h-20 flex items-center dark:bg-slate-900/90 dark:border-slate-800 sticky top-0 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div
+                    class="w-8 h-8 lg:w-9 lg:h-9 bg-brand-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:rotate-12 transition-transform duration-300">
+                    <i class="fa-solid fa-shapes text-xs lg:text-sm"></i>
+                </div>
+                <span
+                    class="text-lg lg:text-xl font-display font-bold tracking-tight text-paper-900 dark:text-white">GenPrintable</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-6">
+                <!-- Simple Nav for Utility Pages -->
+                <a href="index.html"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Home</a>
+                <a href="index.html#generators"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Tools</a>
+                <a href="about.html"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">About</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle-desktop" aria-label="Toggle Dark Mode"
+                    class="hidden md:flex w-10 h-10 rounded-full bg-paper-100 text-paper-800 hover:bg-paper-200 dark:bg-slate-800 dark:text-yellow-400 dark:hover:bg-slate-700 transition-all items-center justify-center">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 dark:text-slate-200 text-2xl p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-[60] bg-white/98 dark:bg-slate-950/98 backdrop-blur-xl hidden flex-col h-[100dvh] transition-all duration-300">
+            <div
+                class="flex items-center justify-between px-6 h-16 border-b border-slate-100 dark:border-slate-800 flex-shrink-0 bg-white/50 dark:bg-slate-900/50">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white"><i
+                            class="fa-solid fa-shapes text-xs lg:text-sm"></i></div>
+                    <span class="text-lg font-display font-bold text-slate-900 dark:text-white">GenPrintable</span>
+                </div>
+                <button id="close-menu-btn"
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto px-6 py-6 scrollbar-hide bg-white dark:bg-slate-900">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="text-lg font-bold text-slate-800 dark:text-slate-200">Home</a>
+                    <a href="about.html" class="text-lg font-bold text-slate-800 dark:text-slate-200">About</a>
+                </div>
+            </div>
+            <div
+                class="p-6 border-t border-slate-100 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 flex-shrink-0">
+                <button id="theme-toggle-mobile" aria-label="Toggle Dark Mode"
+                    class="w-full flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-yellow-400 font-bold active:scale-95 transition-transform mb-4">
+                    <i class="fa-solid fa-moon dark:hidden text-slate-500"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                    <span class="dark:text-white text-slate-600">Switch Appearance</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. MAIN CONTENT -->
+    <main class="flex-grow container max-w-4xl mx-auto px-6 py-12 lg:py-20">
+
+        <!-- Header Section -->
+        <div class="mb-12 border-b border-slate-200 dark:border-slate-800 pb-8">
+            <h1 class="text-3xl md:text-5xl font-display font-extrabold text-slate-900 dark:text-white mb-4">Privacy
+                Policy</h1>
+            <p
+                class="text-slate-500 dark:text-slate-400 font-medium bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-lg inline-block text-sm">
+                <i class="fa-regular fa-calendar mr-2"></i>Effective Date: December 3, 2025
+            </p>
+        </div>
+
+        <!-- Document Body -->
+        <div class="space-y-12 text-slate-600 dark:text-slate-300 leading-relaxed">
+
+            <!-- 1. Introduction -->
+            <section id="introduction" class="scroll-mt-24">
+                <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-600 text-sm">1</span>
+                    Introduction
+                </h2>
+                <p>GenPrintable.com is committed to protecting your privacy. This policy explains how we collect, use,
+                    and disclose information when you use our services, including our AI generation tools and printable
+                    resources. Our core principle is <strong
+                        class="text-slate-900 dark:text-white font-semibold">minimal collection of Personally
+                        Identifiable Information (PII).</strong></p>
+            </section>
+
+            <!-- 2. Data Collection -->
+            <section id="data-collection" class="scroll-mt-24">
+                <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-600 text-sm">2</span>
+                    Information We Collect
+                </h2>
+                <p class="mb-4">We primarily collect Non-Personally Identifiable Information (Non-PII):</p>
+                <ul class="list-none space-y-4 pl-2">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-brand-500 mt-1"></i>
+                        <span>
+                            <strong class="text-slate-900 dark:text-white font-semibold">Usage Data:</strong> This
+                            includes pages viewed, session duration, browser type, and interaction data with our
+                            generators (e.g., the parameters you input into the AI Cut and Paste Generator).
+                        </span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-brand-500 mt-1"></i>
+                        <span>
+                            <strong class="text-slate-900 dark:text-white font-semibold">Technical Information:</strong>
+                            IP address (used for geolocation and abuse prevention), and device identifiers.
+                        </span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-brand-500 mt-1"></i>
+                        <span>
+                            <strong class="text-slate-900 dark:text-white font-semibold">Account Information
+                                (Optional):</strong> If you register an account or purchase AI enhanced features, we
+                            collect your email address. Payment details are handled by secure third-party processors
+                            (e.g., Stripe) and are <strong
+                                class="text-slate-900 dark:text-white font-semibold">not</strong> stored by us.
+                        </span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 3. Third-Party Ads (AdSense) - High Visibility Box -->
+            <section id="third-party-ads" class="scroll-mt-24">
+                <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-600 text-sm">3</span>
+                    Third-Party Advertising
+                </h2>
+
+                <!-- Compliance Notice Box -->
+                <div
+                    class="ad-disclosure bg-orange-50 dark:bg-orange-900/10 border border-orange-200 dark:border-orange-800/50 rounded-2xl p-6 md:p-8 mb-6">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-circle-exclamation text-orange-500 text-xl"></i>
+                        <h3 class="font-bold text-orange-600 dark:text-orange-400">Mandatory Disclosure for AdSense
+                            Compliance</h3>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-700 dark:text-slate-300">
+                        <p>GenPrintable.com utilizes <strong class="font-bold text-slate-900 dark:text-white">Google
+                                AdSense</strong> to serve advertisements. Google, as a third-party vendor, uses cookies
+                            to serve ads based on a user's prior visits to our website or other websites.</p>
+
+                        <p>Google's use of the <strong class="font-bold text-slate-900 dark:text-white">DART
+                                cookie</strong> enables it to serve ads to our users based on their visit to
+                            GenPrintable.com and other sites on the Internet.</p>
+
+                        <p>Users may opt out of the use of the DART cookie by visiting the Google Ad and Content Network
+                            privacy policy: <a href="https://policies.google.com/technologies/ads" target="_blank"
+                                class="text-brand-600 underline hover:text-brand-700 break-all">https://policies.google.com/technologies/ads</a>.
+                        </p>
+
+                        <p>We also use Google Analytics to analyze site usage. These third-party services may collect
+                            information about your usage and combine it with other information to provide advertising
+                            services.</p>
+                    </div>
+                </div>
+
+                <ul class="list-disc pl-5 space-y-2 text-sm md:text-base marker:text-brand-500">
+                    <li><strong class="text-slate-900 dark:text-white font-semibold">Third-Party Links:</strong> We
+                        strongly advise you to consult the respective privacy policies of these third-party ad servers
+                        for more detailed information on their practices.</li>
+                    <li><strong class="text-slate-900 dark:text-white font-semibold">Google Privacy Policy:</strong> <a
+                            href="https://policies.google.com/privacy" target="_blank"
+                            class="text-brand-600 hover:text-brand-500 hover:underline transition-colors">https://policies.google.com/privacy</a>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 4. Paid Services -->
+            <section id="paid-features" class="scroll-mt-24">
+                <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-600 text-sm">4</span>
+                    Paid Services Data Handling
+                </h2>
+                <p>GenPrintable.com offers AI enhanced features (e.g., higher resolution outputs, batch generation).
+                    Purchase and subscription information is processed by third-party secure payment platforms. We only
+                    retain records of your purchase history and your current AI service credit/subscription status.</p>
+            </section>
+
+            <!-- 5. Children's Privacy -->
+            <section id="children-privacy" class="scroll-mt-24">
+                <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-600 text-sm">5</span>
+                    Children's Privacy (COPPA)
+                </h2>
+                <p class="mb-4">Our services are designed for educational and entertainment purposes but are generally
+                    directed towards adults (parents, teachers) for use.</p>
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                    <p class="mb-2"><strong class="text-slate-900 dark:text-white">We do not knowingly collect</strong>
+                        Personally Identifiable Information from children under the age of 13 in compliance with the
+                        Children’s Online Privacy Protection Act (COPPA).</p>
+                    <p class="text-sm">If you are a parent or guardian and believe your child has provided us with PII
+                        without your consent, please notify us immediately via the contact email and we will take steps
+                        to remove that information.</p>
+                </div>
+            </section>
+
+            <!-- 6. Your Rights -->
+            <section id="your-rights" class="scroll-mt-24">
+                <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-600 text-sm">6</span>
+                    Your Choices and Rights
+                </h2>
+                <p>You can choose to disable cookies through your individual browser options. Disabling cookies may
+                    affect your ability to use certain features on GenPrintable.com (such as saving generation
+                    preferences).</p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+        class="bg-slate-50 dark:bg-slate-900 pt-20 pb-10 border-t border-slate-200 dark:border-slate-800 relative overflow-hidden mt-auto">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 lg:col-span-2">
+                    <a href="index.html" class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white">
+                            <i class="fa-solid fa-shapes text-xs"></i>
+                        </div>
+                        <span class="text-lg font-display font-bold text-slate-900 dark:text-white">GenPrintable</span>
+                    </a>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 max-w-sm">Secure, compliant, and
+                        privacy-focused educational tools for the modern classroom and home.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="privacy.html" class="text-brand-600 font-medium">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-brand-600 transition-colors">Terms of Service</a>
+                        </li>
+                        <li><a href="#" class="hover:text-brand-600 transition-colors">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="contact.html" class="hover:text-brand-600 transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-brand-600 transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 dark:border-slate-700 pt-8 text-center text-sm text-slate-400">
+                &copy; 2025 GenPrintable Suite. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Dark Mode Logic
+            const html = document.documentElement;
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+
+            const desktopThemeBtn = document.getElementById('theme-toggle-desktop');
+            const mobileThemeBtn = document.getElementById('theme-toggle-mobile');
+
+            function toggleDarkMode() {
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    html.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+            }
+            if (desktopThemeBtn) desktopThemeBtn.addEventListener('click', toggleDarkMode);
+            if (mobileThemeBtn) mobileThemeBtn.addEventListener('click', toggleDarkMode);
+
+            // Mobile Menu
+            const menu = document.getElementById('mobile-menu');
+            const openBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-menu-btn');
+
+            function toggleMenu() {
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    menu.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    document.body.style.overflow = '';
+                }
+            }
+            if (openBtn) openBtn.addEventListener('click', toggleMenu);
+            if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
+        });
+    </script>
+</body>
+
+</html>
