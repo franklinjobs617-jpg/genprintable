@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenPrintable - OpenCV 智能剪贴画生成器</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        .cursor-picker {
+            cursor: crosshair;
+        }
+
+        .part-preview {
+            cursor: move;
+            border: 2px solid transparent;
+            position: absolute;
+        }
+
+        .part-preview.selected {
+            border-color: red;
+            border-style: dashed;
+            z-index: 10;
+        }
+
+        #print-layout-container {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            width: 794px;
+            min-height: 1123px;
+            background-color: white;
+        }
+
+        .smart-highlight {
+            stroke: #4CAF50;
+            stroke-width: 3;
+            fill: rgba(76, 175, 80, 0.3);
+            pointer-events: none;
+            animation: pulse 1s infinite alternate;
+        }
+
+        .preview-contour {
+            stroke: rgba(0, 120, 255, 0.4);
+            stroke-width: 1.5;
+            fill: transparent;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            from {
+                opacity: 0.5;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 强制覆盖 Tailwind 的 hidden 类，确保遮罩能被正确隐藏 */
+        .force-hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col h-screen bg-gray-100">
+
+    <header class="bg-blue-600 text-white p-4 shadow-md flex justify-between items-center z-10">
+        <h1 class="text-2xl font-bold">GenPrintable.com - 🤖 智能剪切</h1>
+        <nav class="space-x-4">
+            <button id="uploadBtn" class="bg-blue-700 hover:bg-blue-800 font-bold py-2 px-4 rounded transition">⬆️
+                上传图片</button>
+            <button id="pickerTool"
+                class="bg-indigo-600 hover:bg-indigo-700 font-bold py-2 px-4 rounded transition shadow-lg ring-2 ring-white">🖱️
+                拾取模式</button>
+            <button id="moveTool" class="bg-yellow-600 hover:bg-yellow-700 font-bold py-2 px-4 rounded transition">✋
+                移动模式</button>
+            <button id="exportPdfBtn"
+                class="bg-purple-600 hover:bg-purple-700 font-bold py-2 px-4 rounded transition">📥 生成 PDF</button>
+        </nav>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden relative">
+        <aside class="w-72 bg-white p-4 shadow-lg overflow-y-auto z-10 flex flex-col">
+            <div class="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-100">
+                <h3 class="font-bold text-blue-800 mb-1">状态监控</h3>
+                <div id="statusMessage" class="text-sm text-blue-600 font-mono">等待引擎...</div>
+            </div>
+            <h2 class="text-xl font-semibold mb-4 mt-2">部件设置</h2>
+            <div id="configPanel" class="hidden bg-gray-50 p-3 rounded-lg border border-gray-200 mb-4">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">填充颜色:</label>
+                    <input type="color" id="partColor"
+                        class="h-8 w-12 border border-gray-300 rounded mt-1 cursor-pointer" />
+                </div>
+                <button id="deletePartBtn"
+                    class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-2 px-4 rounded w-full">🗑️
+                    删除部件</button>
+            </div>
+            <div class="mt-auto space-y-2">
+                <button id="clearAllBtn"
+                    class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded w-full">重置画布</button>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex justify-center items-center bg-gray-200 p-4 relative overflow-auto">
+            <div id="canvasWrapper" class="relative bg-white shadow-2xl border border-gray-300 overflow-hidden"
+                style="width: 800px; height: 600px;">
+                <canvas id="mainCanvas" class="absolute top-0 left-0"></canvas>
+                <svg id="svgLayer" class="absolute top-0 left-0 pointer-events-none" width="800" height="600"
+                    style="z-index: 5;"></svg>
+
+                <!-- 加载遮罩 (默认加上 force-hidden 确保初始不显示) -->
+                <div id="loadingOverlay"
+                    class="absolute inset-0 bg-white/90 z-50 flex flex-col justify-center items-center force-hidden">
+                    <div class="animate-spin rounded-full h-12 w-12 border-4 border-blue-600 border-t-transparent mb-4">
+                    </div>
+                    <div class="text-blue-600 font-bold text-lg">AI 正在识别轮廓...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <input type="file" id="fileInput" accept="image/*" class="hidden">
+    <div id="print-layout-container"></div>
+
+    <script>
+        // DOM Elements
+        const els = {
+            fileInput: document.getElementById('fileInput'),
+            uploadBtn: document.getElementById('uploadBtn'),
+            mainCanvas: document.getElementById('mainCanvas'),
+            svgLayer: document.getElementById('svgLayer'),
+            canvasWrapper: document.getElementById('canvasWrapper'),
+            pickerTool: document.getElementById('pickerTool'),
+            moveTool: document.getElementById('moveTool'),
+            exportPdfBtn: document.getElementById('exportPdfBtn'),
+            clearAllBtn: document.getElementById('clearAllBtn'),
+            configPanel: document.getElementById('configPanel'),
+            deletePartBtn: document.getElementById('deletePartBtn'),
+            partColorInput: document.getElementById('partColor'),
+            statusMessage: document.getElementById('statusMessage'),
+            loadingOverlay: document.getElementById('loadingOverlay')
+        };
+
+        const ctx = els.mainCanvas.getContext('2d', { willReadFrequently: true });
+
+        // State
+        let cv = null;
+        let originalImage = null;
+        let workW = 800, workH = 600;
+        let parts = [];
+        let allContours = [];
+        let activeTool = 'picker';
+        let selectedPartId = null;
+
+        // --- Utils: Loading Control ---
+        function showLoading() {
+            els.loadingOverlay.classList.remove('force-hidden');
+        }
+        function hideLoading() {
+            els.loadingOverlay.classList.add('force-hidden');
+        }
+
+        // --- Init ---
+        document.addEventListener('DOMContentLoaded', () => {
+            loadOpenCv();
+            // 初始化画布尺寸
+            resizeCanvas(800, 600);
+        });
+
+        function loadOpenCv() {
+            if (document.getElementById('opencv-script')) return;
+            els.statusMessage.innerHTML = '⏳ 加载引擎中...';
+            const script = document.createElement('script');
+            script.id = 'opencv-script';
+            script.src = 'https://pub-476193f3c5084ebaabd517e2c8788715.r2.dev/opencv.js';
+            script.async = true;
+            script.onload = () => {
+                const checkCv = setInterval(() => {
+                    if (window.cv && window.cv.Mat) {
+                        clearInterval(checkCv);
+                        cv = window.cv;
+                        els.statusMessage.innerHTML = '✅ <b>引擎就绪</b><br>请上传图片';
+                    }
+                }, 100);
+            };
+            document.body.appendChild(script);
+        }
+
+        // --- Upload & Process ---
+        els.uploadBtn.addEventListener('click', () => els.fileInput.click());
+
+        els.fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (!cv) return alert("引擎尚未就绪，请稍候...");
+
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+                const img = new Image();
+                img.onload = () => {
+                    processImage(img);
+                };
+                img.src = evt.target.result;
+            };
+            reader.readAsDataURL(file);
+            els.fileInput.value = '';
+        });
+
+        function processImage(img) {
+            // 1. 显示遮罩
+            showLoading();
+            els.statusMessage.innerText = "⏳ 正在处理...";
+
+            // 2. 异步处理防止卡死 UI
+            setTimeout(() => {
+                try {
+                    // 缩放逻辑 (限制最大1000px)
+                    const MAX = 1000;
+                    let w = img.width, h = img.height;
+                    if (w > h && w > MAX) { h *= MAX / w; w = MAX; }
+                    else if (h > MAX) { w *= MAX / h; h = MAX; }
+
+                    workW = Math.floor(w);
+                    workH = Math.floor(h);
+                    originalImage = img;
+
+                    resizeCanvas(workW, workH);
+                    ctx.drawImage(img, 0, 0, workW, workH);
+
+                    // 清理
+                    parts = [];
+                    allContours = [];
+                    document.querySelectorAll('.svg-part-wrapper').forEach(e => e.remove());
+                    els.svgLayer.innerHTML = '';
+                    els.configPanel.classList.add('hidden');
+
+                    // 核心识别
+                    detectContours();
+
+                } catch (err) {
+                    console.error(err);
+                    els.statusMessage.innerText = "❌ 错误: " + err.message;
+                } finally {
+                    // 3. 强制隐藏遮罩
+                    hideLoading();
+                }
+            }, 100);
+        }
+
+        function detectContours() {
+            let src = cv.imread(els.mainCanvas);
+            let dst = new cv.Mat();
+            let gray = new cv.Mat();
+            let hierarchy = new cv.Mat();
+            let contours = new cv.MatVector();
+
+            try {
+                cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY, 0);
+                // 稍微增强对比度或模糊
+                cv.GaussianBlur(gray, gray, new cv.Size(5, 5), 0);
+                cv.Canny(gray, dst, 30, 100, 3, false);
+
+                // 查找轮廓
+                cv.findContours(dst, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
+
+                const minArea = (src.cols * src.rows) * 0.001; // 0.1% 面积过滤
+
+                for (let i = 0; i < contours.size(); ++i) {
+                    let cnt = contours.get(i);
+                    let area = cv.contourArea(cnt);
+
+                    if (area > minArea) {
+                        let approx = new cv.Mat();
+                        cv.approxPolyDP(cnt, approx, 0.002 * cv.arcLength(cnt, true), true);
+
+                        let pathData = getSvgPath(approx);
+                        if (pathData) {
+                            allContours.push({
+                                pathData,
+                                area,
+                                mat: cnt, // 引用
+                                bbox: cv.boundingRect(cnt)
+                            });
+                            // 画预览线
+                            const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                            p.setAttribute('d', pathData);
+                            p.setAttribute('class', 'preview-contour');
+                            els.svgLayer.appendChild(p);
+                        }
+                        approx.delete();
+                    }
+                }
+                els.statusMessage.innerHTML = `✅ 识别到 ${allContours.length} 个部件`;
+
+            } finally {
+                src.delete(); dst.delete(); gray.delete(); hierarchy.delete(); contours.delete();
+            }
+        }
+
+        function getSvgPath(mat) {
+            const d = mat.data32S;
+            if (!d || d.length === 0) return "";
+            let s = `M ${d[0]} ${d[1]}`;
+            for (let i = 2; i < d.length; i += 2) s += ` L ${d[i]} ${d[i + 1]}`;
+            return s + " Z";
+        }
+
+        // --- Interaction ---
+        els.mainCanvas.addEventListener('mousedown', (e) => {
+            if (activeTool !== 'picker') return;
+            const pos = getPos(e);
+
+            // 查找点击的轮廓
+            let match = null;
+            let minA = Infinity;
+
+            for (const c of allContours) {
+                // Point Test
+                if (cv.pointPolygonTest(c.mat, new cv.Point(pos.x, pos.y), false) >= 0) {
+                    if (c.area < minA) {
+                        minA = c.area;
+                        match = c;
+                    }
+                }
+            }
+
+            if (match) {
+                createPart(match);
+                flashHighlight(match.pathData);
+                els.statusMessage.innerText = "✂️ 已提取";
+            }
+        });
+
+        function createPart(c) {
+            // 1. Cut
+            const tmp = document.createElement('canvas');
+            tmp.width = workW; tmp.height = workH;
+            const tCtx = tmp.getContext('2d');
+
+            const p = new Path2D(c.pathData);
+            tCtx.fillStyle = '#000';
+            tCtx.fill(p);
+            tCtx.globalCompositeOperation = 'source-in';
+            tCtx.drawImage(els.mainCanvas, 0, 0);
+
+            // 2. Crop
+            const crop = document.createElement('canvas');
+            crop.width = c.bbox.width; crop.height = c.bbox.height;
+            crop.getContext('2d').drawImage(tmp, c.bbox.x, c.bbox.y, c.bbox.width, c.bbox.height, 0, 0, c.bbox.width, c.bbox.height);
+
+            // 3. Object
+            const part = {
+                id: 'p' + Date.now(),
+                x: c.bbox.x, y: c.bbox.y,
+                w: c.bbox.width, h: c.bbox.height,
+                path: c.pathData,
+                img: crop.toDataURL(),
+                color: null
+            };
+            parts.push(part);
+            renderPart(part);
+        }
+
+        function renderPart(part) {
+            const div = document.createElement('div');
+            div.className = 'svg-part-wrapper part-preview';
+            div.id = part.id;
+            Object.assign(div.style, { left: part.x + 'px', top: part.y + 'px', width: part.w + 'px', height: part.h + 'px' });
+
+            div.innerHTML = `
+                <svg width="100%" height="100%" viewBox="0 0 ${part.w} ${part.h}">
+                    <defs>
+                        <pattern id="pat-${part.id}" width="100%" height="100%" patternUnits="userSpaceOnUse">
+                            <image href="${part.img}" width="${part.w}" height="${part.h}" />
+                        </pattern>
+                    </defs>
+                    <path d="${part.path}" transform="translate(-${part.x}, -${part.y})" 
+                          fill="url(#pat-${part.id})" stroke="black" stroke-width="1" />
+                </svg>
+            `;
+
+            div.addEventListener('mousedown', (e) => startDrag(e, div, part));
+            els.canvasWrapper.appendChild(div);
+            selectPart(div);
+        }
+
+        function startDrag(e, el, part) {
+            if (activeTool !== 'move') { selectPart(el); return; }
+            e.stopPropagation();
+            selectPart(el);
+
+            const startX = e.clientX, startY = e.clientY;
+            const origX = part.x, origY = part.y;
+
+            function move(ev) {
+                part.x = origX + (ev.clientX - startX);
+                part.y = origY + (ev.clientY - startY);
+                el.style.left = part.x + 'px';
+                el.style.top = part.y + 'px';
+            }
+            function up() {
+                window.removeEventListener('mousemove', move);
+                window.removeEventListener('mouseup', up);
+            }
+            window.addEventListener('mousemove', move);
+            window.addEventListener('mouseup', up);
+        }
+
+        // --- Helpers ---
+        function resizeCanvas(w, h) {
+            els.mainCanvas.width = w; els.mainCanvas.height = h;
+            els.svgLayer.setAttribute('width', w); els.svgLayer.setAttribute('height', h);
+            els.canvasWrapper.style.width = w + 'px'; els.canvasWrapper.style.height = h + 'px';
+        }
+        function getPos(e) {
+            const r = els.mainCanvas.getBoundingClientRect();
+            return { x: e.clientX - r.left, y: e.clientY - r.top };
+        }
+        function flashHighlight(d) {
+            const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            p.setAttribute('d', d);
+            p.setAttribute('class', 'smart-highlight');
+            els.svgLayer.appendChild(p);
+            setTimeout(() => p.remove(), 500);
+        }
+        function selectPart(el) {
+            document.querySelectorAll('.part-preview').forEach(e => e.classList.remove('selected'));
+            selectedPartId = null;
+            els.configPanel.classList.add('hidden');
+            if (el) {
+                el.classList.add('selected');
+                selectedPartId = el.id;
+                els.configPanel.classList.remove('hidden');
+            }
+        }
+
+        // --- Tool Switching ---
+        els.pickerTool.addEventListener('click', () => setTool('picker'));
+        els.moveTool.addEventListener('click', () => setTool('move'));
+
+        function setTool(t) {
+            activeTool = t;
+            els.pickerTool.className = t === 'picker' ? 'bg-indigo-600 text-white py-2 px-4 rounded shadow-lg ring-2' : 'bg-gray-500 text-white py-2 px-4 rounded opacity-70';
+            els.moveTool.className = t === 'move' ? 'bg-yellow-600 text-white py-2 px-4 rounded shadow-lg ring-2' : 'bg-gray-500 text-white py-2 px-4 rounded opacity-70';
+            els.canvasWrapper.style.cursor = t === 'picker' ? 'crosshair' : 'default';
+        }
+
+        // --- Other Buttons ---
+        els.clearAllBtn.addEventListener('click', () => {
+            if (confirm("重置?")) {
+                parts = []; allContours = [];
+                originalImage = null;
+                ctx.clearRect(0, 0, workW, workH);
+                els.svgLayer.innerHTML = '';
+                document.querySelectorAll('.part-preview').forEach(e => e.remove());
+                els.fileInput.value = '';
+                els.statusMessage.innerText = "已重置";
+            }
+        });
+
+        els.deletePartBtn.addEventListener('click', () => {
+            if (selectedPartId) {
+                document.getElementById(selectedPartId).remove();
+                parts = parts.filter(p => p.id !== selectedPartId);
+                selectPart(null);
+            }
+        });
+
+        els.partColorInput.addEventListener('input', (e) => {
+            if (selectedPartId) {
+                const p = parts.find(x => x.id === selectedPartId);
+                if (p) {
+                    p.color = e.target.value;
+                    document.querySelector(`#${selectedPartId} path`).setAttribute('fill', p.color);
+                }
+            }
+        });
+
+        // --- Export ---
+        els.exportPdfBtn.addEventListener('click', () => {
+            if (parts.length === 0) return alert("没有部件");
+
+            // 简单的 PDF 导出逻辑
+            const doc = new jspdf.jsPDF();
+            parts.forEach((p, i) => {
+                // 这里为了演示简单，直接添加图片
+                // 实际应该按排版逻辑处理
+                if (i > 0 && i % 2 === 0) doc.addPage();
+                doc.addImage(p.img, 'PNG', 20, 20 + (i % 2) * 120, p.w / 4, p.h / 4);
+                doc.text("Cut here", 20, 15 + (i % 2) * 120);
+            });
+            doc.save('craft.pdf');
+        });
+
+    </script>
+</body>
+
+</html>
