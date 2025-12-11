@@ -106,6 +106,7 @@
 
 <body
     class="bg-paper-50 text-paper-800 font-sans antialiased selection:bg-brand-100 selection:text-brand-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100 flex flex-col min-h-screen">
+
     <!-- 1. NAVIGATION -->
     <header
         class="w-full bg-white/90 backdrop-blur-md border-b border-paper-100 z-50 h-16 lg:h-20 flex items-center dark:bg-slate-900/90 dark:border-slate-800 sticky top-0 transition-colors duration-300">
@@ -118,50 +119,215 @@
                 <span
                     class="text-lg lg:text-xl font-display font-bold tracking-tight text-paper-900 dark:text-white">GenPrintable</span>
             </a>
+
             <!-- Desktop Nav -->
             <nav class="hidden md:flex items-center gap-6">
-                <a href="/"
-                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Home</a>
-                <a href="/tools/connect-the-dots.html"
-                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Tools</a>
+                <!-- Tools Dropdown -->
+                <div class="relative group h-16 lg:h-20 flex items-center">
+                    <button
+                        class="flex items-center gap-1 text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400 focus:outline-none">
+                        Tools
+                        <i
+                            class="fa-solid fa-chevron-down text-xs opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+                    </button>
+                    <!-- Dropdown Content (Dark mode fixed) -->
+                    <div
+                        class="absolute top-full left-1/2 -translate-x-1/2 w-[480px] bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 p-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50 grid grid-cols-2 gap-2">
+                        <!-- Links... (Same logic applied) -->
+                        <a href="/tools/connect-the-dots.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-circle-nodes text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Connect Dots</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Math sequences</div>
+                            </div>
+                        </a>
+                        <a href="/tools/tracing-generator.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-sky-100 dark:bg-sky-900/30 text-sky-500 dark:text-sky-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-pen-fancy text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Name Tracing</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Handwriting</div>
+                            </div>
+                        </a>
+                        <a href="/tools/cut-and-paste-crafts.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-accent-100 dark:bg-accent-900/30 text-accent-600 dark:text-accent-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-scissors text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Paper Crafts</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Cut & Paste</div>
+                            </div>
+                        </a>
+                        <a href="/tools/color-by-number.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-pink-100 dark:bg-pink-900/30 text-pink-500 dark:text-pink-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-palette text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Color by Number</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Coloring</div>
+                            </div>
+                        </a>
+                        <a href="/tools/maze-generator.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-diamond-turn-right text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Maze Maker</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Logic</div>
+                            </div>
+                        </a>
+                        <a href="/tools/word-search-generator.html"
+                            class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group/item">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-500 dark:text-orange-400 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                                <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-900 dark:text-slate-100">Word Search</div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">Vocab</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="/index.html#difference"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Features</a>
                 <a href="/pricing.html"
                     class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">Pricing</a>
+                <a href="/about.html"
+                    class="text-sm font-semibold text-paper-800 hover:text-brand-600 transition-colors dark:text-slate-200 dark:hover:text-brand-400">About</a>
             </nav>
+
             <div class="flex items-center gap-4">
                 <button id="theme-toggle-desktop" aria-label="Toggle Dark Mode"
                     class="hidden md:flex w-10 h-10 rounded-full bg-paper-100 text-paper-800 hover:bg-paper-200 dark:bg-slate-800 dark:text-yellow-400 dark:hover:bg-slate-700 transition-all items-center justify-center">
                     <i class="fa-solid fa-moon dark:hidden"></i>
                     <i class="fa-solid fa-sun hidden dark:block"></i>
                 </button>
-                <a href="/tools/connect-the-dots.html"
-                    class="hidden sm:flex bg-brand-500 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-brand-600 hover:shadow-lg transition-all">
-                    Create Custom
+                <a href="/tools/tracing-generator.html"
+                    class="hidden sm:flex bg-brand-500 text-white px-5 py-2 lg:px-6 lg:py-2.5 rounded-full text-xs lg:text-sm font-bold hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/30 hover:-translate-y-0.5 transition-all">
+                    Start Creating
                 </a>
             </div>
-            <button id="mobile-menu-btn" class="md:hidden text-slate-600 dark:text-slate-200 text-2xl p-2">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 dark:text-slate-200 text-2xl p-2"><i
+                    class="fa-solid fa-bars"></i></button>
         </div>
-        <!-- Mobile Menu -->
+
+        <!-- Mobile Menu (Fixed) -->
         <div id="mobile-menu"
             class="fixed inset-0 z-[60] bg-white/98 dark:bg-slate-950/98 backdrop-blur-xl hidden flex-col h-[100dvh] transition-all duration-300">
-            <div class="flex items-center justify-between px-6 h-16 border-b border-slate-100 dark:border-slate-800">
-                <span class="text-lg font-display font-bold text-slate-900 dark:text-white">Menu</span>
+            <div
+                class="flex items-center justify-between px-6 h-16 border-b border-slate-100 dark:border-slate-800 flex-shrink-0 bg-white/50 dark:bg-slate-900/50">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white"><i
+                            class="fa-solid fa-shapes text-xs lg:text-sm"></i></div>
+                    <span class="text-lg font-display font-bold text-slate-900 dark:text-white">GenPrintable</span>
+                </div>
                 <button id="close-menu-btn"
-                    class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
-                    <i class="fa-solid fa-xmark"></i>
+                    class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
-            <div class="flex-1 p-6 space-y-4">
-                <a href="/" class="block text-lg font-bold text-slate-900 dark:text-white">Home</a>
-                <a href="/tools/connect-the-dots.html"
-                    class="block text-lg font-bold text-slate-900 dark:text-white">Connect
-                    Dots Tool</a>
-                <button id="theme-toggle-mobile"
-                    class="w-full flex items-center gap-3 py-3 text-slate-600 dark:text-slate-300">
-                    <i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:block"></i> Toggle
-                    Theme
+            <div class="flex-1 overflow-y-auto px-6 py-6 scrollbar-hide bg-white dark:bg-slate-900">
+                <div class="mb-8">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 ml-1">Tools</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="/tools/connect-the-dots.html" onclick="toggleMenu()"
+                            class="group flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 active:scale-95 transition-all duration-200 hover:border-brand-200 dark:hover:border-brand-800">
+                            <div
+                                class="w-10 h-10 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-circle-nodes"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Connect Dots</span>
+                        </a>
+                        <a href="/tools/tracing-generator.html" onclick="toggleMenu()"
+                            class="group flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 active:scale-95 transition-all duration-200 hover:border-sky-200 dark:hover:border-sky-800">
+                            <div
+                                class="w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-900/30 text-sky-500 dark:text-sky-400 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-pen-fancy"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Tracing</span>
+                        </a>
+                        <a href="/tools/cut-and-paste-crafts.html" onclick="toggleMenu()"
+                            class="group flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 active:scale-95 transition-all duration-200 hover:border-accent-200 dark:hover:border-accent-800">
+                            <div
+                                class="w-10 h-10 rounded-full bg-accent-100 dark:bg-accent-900/30 text-accent-500 dark:text-accent-400 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-scissors"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Crafts</span>
+                        </a>
+                        <a href="/tools/color-by-number.html" onclick="toggleMenu()"
+                            class="group flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 active:scale-95 transition-all duration-200 hover:border-pink-200 dark:hover:border-pink-800">
+                            <div
+                                class="w-10 h-10 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-500 dark:text-pink-400 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Coloring</span>
+                        </a>
+                        <a href="/tools/maze-generator.html" onclick="toggleMenu()"
+                            class="group flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 active:scale-95 transition-all duration-200 hover:border-amber-200 dark:hover:border-amber-800">
+                            <div
+                                class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-500 dark:text-amber-400 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-diamond-turn-right"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Mazes</span>
+                        </a>
+                        <a href="/tools/word-search-generator.html" onclick="toggleMenu()"
+                            class="group flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 active:scale-95 transition-all duration-200 hover:border-orange-200 dark:hover:border-orange-800">
+                            <div
+                                class="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-500 dark:text-orange-400 flex items-center justify-center text-lg mb-1 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Word Search</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 ml-1">Explore</h3>
+                    <div class="flex flex-col space-y-1">
+                        <a href="/index.html#difference" onclick="toggleMenu()"
+                            class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 group"><span
+                                class="text-base font-bold text-slate-800 dark:text-slate-200">Features</span><i
+                                class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-brand-500 transition-colors"></i></a>
+                        <a href="/pricing.html" onclick="toggleMenu()"
+                            class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 group"><span
+                                class="text-base font-bold text-slate-800 dark:text-slate-200">Pricing</span><i
+                                class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-brand-500 transition-colors"></i></a>
+                        <a href="/about.html" onclick="toggleMenu()"
+                            class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 group"><span
+                                class="text-base font-bold text-slate-800 dark:text-slate-200">About Us</span><i
+                                class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-brand-500 transition-colors"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 flex-shrink-0">
+                <button id="theme-toggle-mobile" aria-label="Toggle Dark Mode"
+                    class="w-full flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-yellow-400 font-bold active:scale-95 transition-transform mb-4">
+                    <i class="fa-solid fa-moon dark:hidden text-slate-500"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                    <span class="dark:text-white text-slate-600">Switch Appearance</span>
                 </button>
+                <div class="text-center">
+                    <a href="/privacy.html" onclick="toggleMenu()"
+                        class="text-xs font-medium text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">Privacy
+                        Policy</a>
+                    <span class="text-slate-300 mx-2">•</span>
+                    <a href="/terms.html"
+                        class="text-xs font-medium text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">Terms</a>
+                </div>
             </div>
         </div>
     </header>
@@ -233,7 +399,8 @@
                         <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded-r-lg mt-6">
                             <p class="text-sm text-blue-800 dark:text-blue-200 m-0">
                                 <strong>Prefer Realism?</strong> If you prefer realism over abstract but still demand
-                                high-dot challenge, review our collection of <a href="#"
+                                high-dot challenge, review our collection of <a
+                                    href="/dots/adults/difficulty/hard-printable.html"
                                     class="underline hover:text-blue-600 font-bold">Hard Connect the Dots
                                     Printables</a>.
                             </p>
@@ -434,12 +601,15 @@
         </article>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (Updated) -->
     <footer
-        class="bg-slate-50 dark:bg-slate-900 pt-20 pb-10 border-t border-slate-200 dark:border-slate-800 relative overflow-hidden mt-auto">
+        class="bg-slate-50 dark:bg-slate-900 pt-20 pb-10 border-t border-slate-200 dark:border-slate-800 relative overflow-hidden">
         <div class="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none">
             <div
-                class="absolute bottom-[-20%] left-[-10%] w-96 h-96 bg-accent-100/50 dark:bg-accent-900/20 rounded-full blur-[100px]">
+                class="absolute bottom-[-20%] left-[-10%] w-96 h-96 bg-brand-100/50 dark:bg-brand-900/20 rounded-full blur-[100px]">
+            </div>
+            <div
+                class="absolute top-[-20%] right-[-10%] w-96 h-96 bg-accent-100/30 dark:bg-accent-900/20 rounded-full blur-[100px]">
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -448,50 +618,88 @@
                     <a href="/" class="flex items-center gap-2.5 group w-fit">
                         <div
                             class="w-10 h-10 bg-gradient-to-br from-brand-400 to-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
-                            <i class="fa-solid fa-shapes text-sm"></i>
-                        </div>
-                        <span
+                            <i class="fa-solid fa-leaf text-sm"></i>
+                        </div><span
                             class="text-xl font-display font-bold tracking-tight text-slate-900 dark:text-white">GenPrintable</span>
                     </a>
-                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm max-w-sm">
-                        Empowering parents and teachers with AI-driven tools to create
-                        personalized, engaging, and educational printable activities.
-                    </p>
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm max-w-sm">Empowering parents
+                        and teachers with AI-driven tools to create personalized, engaging, and educational printable
+                        activities in seconds.</p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 hover:border-brand-200 transition-all"><i
+                                class="fa-brands fa-twitter"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 hover:border-brand-200 transition-all"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 hover:border-brand-200 transition-all"><i
+                                class="fa-brands fa-pinterest"></i></a>
+                    </div>
                 </div>
                 <div class="lg:col-span-2 lg:col-start-6">
-                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Tools</h4>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Generators</h4>
                     <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
-                        <li>
-                            <a href="/tools/connect-the-dots.html"
-                                class="hover:text-brand-600 transition-colors">Connect
-                                Dots</a>
+                        <li><a href="/tools/connect-the-dots.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Connect
+                                the Dots</a></li>
+                        <li><a href="/tools/tracing-generator.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Tracing
+                                Generator</a></li>
+                        <li><a href="/tools/cut-and-paste-crafts.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Cut and Paste
+                                Crafts</a></li>
+                        <li><a href="/tools/word-search-generator.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Word Search</a>
                         </li>
+                        <li><a href="/tools/maze-generator.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Maze
+                                Generator</a>
+                            </a></li>
                         <li>
-                            <a href="/tools/tracing-generator.html" class="hover:text-brand-600 transition-colors">Name
-                                Tracing</a>
+                            <a href="/tools/color-by-number.html"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Color
+                                by Number</a>
                         </li>
                     </ul>
                 </div>
-                <div class="lg:col-span-4 lg:col-start-9">
-                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">
-                        Stay Updated
-                    </h4>
+                <div class="lg:col-span-2">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Resources</h4>
+                    <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a href="#" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">For
+                                Teachers</a></li>
+                        <li><a href="#"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Help
+                                Center</a></li>
+                        <li><a href="#"
+                                class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Pricing</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-3">
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Stay Updated</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Get new activity ideas delivered to your
+                        inbox.</p>
                     <form class="flex gap-2">
                         <input type="email" placeholder="Enter your email"
-                            class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:border-brand-500 transition-all dark:text-white" />
+                            class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition-all dark:text-white">
                         <button type="button"
-                            class="bg-slate-900 dark:bg-brand-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-brand-600 transition-colors">
-                            Subscribe
-                        </button>
+                            class="bg-slate-900 dark:bg-brand-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-brand-600 transition-colors">Subscribe</button>
                     </form>
                 </div>
             </div>
             <div
-                class="border-t border-slate-200 dark:border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
-                <div>&copy; 2023 GenPrintable Suite.</div>
+                class="border-t border-slate-200 dark:border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+                <div class="text-slate-400">&copy; 2025 GenPrintable Suite. Made with <i
+                        class="fa-solid fa-heart text-accent-400 mx-1"></i> for kids.</div>
                 <div class="flex gap-6">
-                    <a href="#" class="hover:text-brand-600 transition-colors">Privacy</a>
-                    <a href="#" class="hover:text-brand-600 transition-colors">Terms</a>
+                    <a href="/privacy.html"
+                        class="text-slate-500 hover:text-brand-600 font-medium transition-colors">Privacy
+                        Policy</a>
+                    <a href="/terms.html"
+                        class="text-slate-500 hover:text-brand-600 font-medium transition-colors">Terms of
+                        Service</a>
                 </div>
             </div>
         </div>

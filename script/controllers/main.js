@@ -254,7 +254,7 @@ angular.module('pbnApp')
 			var imgData = $scope.ctx.getImageData(0, 0, width, height);
 			var mat = imageDataToSimpMat(imgData, $scope.palette);
 
-			var worker = new Worker('script/processImage.js');
+			var worker = new Worker('/script/processImage.js');
 			worker.addEventListener('message', function (e) {
 				if (e.data.cmd == "status") {
 					$scope.status = e.data.status;
